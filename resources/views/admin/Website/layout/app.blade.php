@@ -1,4 +1,4 @@
-@include('admin.website.sidebar')
+@include('admin.website.layout.sidebar')
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +18,7 @@
 </head>
 
 <body class="">
-    
+
     @include('admin.Website.layout.top_bar')
 
     @yield('main_content')

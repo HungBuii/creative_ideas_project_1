@@ -20,18 +20,28 @@
                             @csrf
                             <div class="input-group">
                                 <i class='bx bxs-user'></i>
-                                <input type="email" name="email" placeholder="Email">
+                                <input type="email" name="email" placeholder="Email" value="{{ old('email') }}"
+                                    autofocus>
+                                @error('email')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                                @if (session()->get('error'))
+                                <div class="text-danger">{{ session()->get('error') }}</div>
+                                @endif
                             </div>
                             <div class="input-group">
                                 <i class='bx bxs-lock-alt'></i>
                                 <input type="password" name="password" placeholder="Password">
+                                @error('password')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <button>
                                 Sign in
                             </button>
                             <p>
                                 <b>
-                                    Don't have an Admin's account? 
+                                    Don't have an Admin's account?
                                 </b>
                                 <a href="{{ route('admin_register_submit') }}"> Click here</a>
                             </p>

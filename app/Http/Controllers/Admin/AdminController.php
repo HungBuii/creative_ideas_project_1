@@ -18,10 +18,10 @@ class AdminController extends Controller
 
     public function login_submit(Request $request)
     {
-        // $request->validate([
-        //     'email' => 'required|email:rfc,dns',
-        //     'password' => 'required|min:5',
-        // ]);
+        $request->validate([
+            'email' => 'required|email:rfc,dns',
+            'password' => 'required|min:5',
+        ]);
 
         $credenticals = [
             "email"=> $request->email,
@@ -35,7 +35,7 @@ class AdminController extends Controller
         }
         else 
         {
-            return redirect()->route('admin_login');
+            return redirect()->route('admin_login')->with('error', 'Information is not correct');
         }
     }
 
