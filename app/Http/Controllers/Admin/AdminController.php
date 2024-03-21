@@ -59,6 +59,19 @@ class AdminController extends Controller
         }
     }
 
+    // Logout
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect()->route('admin_login');
+    }
+
+    // Profile
+    public function profile()
+    {
+        return view('admin.Website.profile');
+    }
+
     // Homepage
     public function home()
     {

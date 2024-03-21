@@ -64,14 +64,15 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-notification">
                         <div class="pro-head">
-                            <img src="" class="img-radius" alt="User-Profile-Image">
-                            <span>John Doe</span>
-                            <a href="auth-signin.html" class="dud-logout" title="Logout">
+                            <img alt="No image" src="{{ asset('uploads/admin.jpg') }}" class="img-radius">
+                            <span>{{ Auth::guard('admin')->user()->name }}</span>
+                            <a href="{{ route('admin_logout') }}" class="dud-logout" title="Logout">
                                 <i class="feather icon-log-out"></i>
                             </a>
                         </div>
                         <ul class="pro-body">
-                            <li><a href="user-profile.html" class="dropdown-item"><i class="feather icon-user"></i>
+                            <li><a href="{{ route('admin_profile') }}" class="dropdown-item"><i
+                                        class="feather icon-user"></i>
                                     Profile</a></li>
                         </ul>
                     </div>

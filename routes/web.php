@@ -22,11 +22,14 @@ Route::get('/', function () {
 Route::get('/admin/login', [AdminController::class, 'login_view'])->name('admin_login'); // login
 Route::post('/admin/login-submit', [AdminController::class, 'login_submit'])->name('admin_login_submit');
 Route::get('/admin/register-submit', [AdminController::class, 'register_submit'])->name('admin_register_submit'); // Register
+Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin_logout'); // Logout
 Route::get('/admin/home', [AdminController::class, 'home'])->name('admin_home')->middleware('admin:admin'); // Homepage
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin_dashboard'); // Dashboard
 Route::get('/admin/list-accounts', [AdminController::class, 'list_accounts'])->name('admin_list_accounts'); // List Account
 Route::get('/admin/events', [AdminController::class, 'events'])->name('admin_events'); // Events
-Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin_profile');
+Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin_profile'); // Profile
+
+
 
 
 /* Marketing Manager */
