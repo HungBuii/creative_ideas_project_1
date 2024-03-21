@@ -66,11 +66,15 @@ class AdminController extends Controller
         return redirect()->route('admin_login');
     }
 
+    /* ----------------------------------------------*/
+
     // Profile
     public function profile()
     {
         return view('admin.Website.profile');
     }
+
+    /* ----------------------------------------------*/
 
     // Homepage
     public function home()
@@ -78,11 +82,15 @@ class AdminController extends Controller
         return view('admin.Website.home');
     }
 
+    /* ----------------------------------------------*/
+
     // Dashboard
     public function dashboard()
     {
         return view('admin.Website.dashboard');
     }
+
+    /* ----------------------------------------------*/
 
     // List Accounts
     public function list_accounts()
@@ -90,9 +98,25 @@ class AdminController extends Controller
         return view('admin.Website.list_accounts');
     }
 
+    // Add account
+    public function add_account()
+    {
+        return view('admin.Website.add_account');
+    }
+
+    // edit account
+    public function edit_account()
+    {
+        return view('admin.Website.edit_account');
+    }
+
+    /* ----------------------------------------------*/
+
     // Events
     public function events()
     {
         return view('admin.Website.events');
     }
+
+    /* ----------------------------------------------*/
 }

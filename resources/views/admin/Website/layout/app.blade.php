@@ -1,9 +1,8 @@
-@include('admin.website.layout.sidebar')
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Admin Home</title>
+    <title>@yield('title')</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -13,13 +12,17 @@
 
 
     <!-- vendor css -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" >
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" >
+    
+    <link rel="stylesheet" href="{{ asset('css/ace.min.css') }}" class="ace-main-stylesheet" id="main-ace-style" />
 
 </head>
 
 <body class="">
-
     @include('admin.Website.layout.top_bar')
+
+    @include('admin.website.layout.sidebar')
 
     @yield('main_content')
 

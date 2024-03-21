@@ -1,5 +1,7 @@
 @extends('admin.Website.layout.app')
 
+@section('title', 'Admin Home')
+
 @section('main_content')
 <div class="pcoded-main-container">
     <div class="pcoded-content">

@@ -1,14 +1,12 @@
-<!-- [ Pre-loader ] start -->
 <div class="loader-bg">
     <div class="loader-track">
         <div class="loader-fill"></div>
     </div>
 </div>
-<!-- [ Pre-loader ] End -->
-<!-- [ navigation menu ] start -->
-<nav class="pcoded-navbar  ">
-    <div class="navbar-wrapper  ">
-        <div class="navbar-content scroll-div " >
+
+<nav class="pcoded-navbar">
+    <div class="navbar-wrapper">
+        <div class="navbar-content scroll-div" >
             
                 <div class="main-menu-header">
                     <a href="{{ route('admin_home') }}">
@@ -39,4 +37,3 @@
         </div>
     </div>
 </nav>
-<!-- [ navigation menu ] end -->
