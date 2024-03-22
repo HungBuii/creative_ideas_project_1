@@ -4,7 +4,7 @@
 
 @section('main_content')
 
-<section class="pcoded-main-container">
+<div class="pcoded-main-container">
     <div class="pcoded-content">
         <div class="page-header">
             <div class="page-block">
@@ -15,104 +15,40 @@
                         </div>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#!"><i class="feather icon-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="#!">{{ Auth::guard('admin')->user()->name }}'s
-                                    Profile</a></li>
+                            <li class="breadcrumb-item"><a href="#!">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#!">Profile</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="main-container ace-save-state" id="main-container">
-            <div class="main-content">
-                <div class="main-content-inner">
-
-                    <div class="page-content">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                {{-- <div class="hr dotted">
-
-                                </div> --}}
-
-                                <div>
-                                    <div id="user-profile-1" class="user-profile row">
-                                        <div class="col-xs-12 col-sm-3 center">
-                                            <div>
-                                                <span class="profile-picture">
-                                                    <img id="avatar" class="editable img-responsive" alt="User's Avatar"
-                                                        src="{{ asset('uploads/admin.jpg') }}" />
-                                                </span>
-
-                                                <div class="space-4">
-
-                                                </div>
-
-                                                <div
-                                                    class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
-                                                    <div class="inline position-relative">
-                                                        <span class="white">{{ Auth::guard('admin')->user()->name }}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="hr hr12 dotted">
-
-                                            </div>
-
-                                            <div class="hr hr16 dotted">
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-12 col-sm-9">
-
-                                            <div class="space-12">
-
-                                            </div>
-
-                                            <div class="profile-user-info profile-user-info-striped">
-                                                <div class="profile-info-row">
-                                                    <div class="profile-info-name"> Name </div>
-
-                                                    <div class="profile-info-value">
-                                                        <span class="editable" id="username">{{ Auth::guard('admin')->user()->name }}</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="profile-info-row">
-                                                    <div class="profile-info-name"> Gmail </div>
-
-                                                    <div class="profile-info-value">
-                                                        <span class="editable" id="age">{{ Auth::guard('admin')->user()->email }}</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="profile-info-row">
-                                                    <div class="profile-info-name"> Joined </div>
-
-                                                    <div class="profile-info-value">
-                                                        <span class="editable" id="signup">{{ Auth::guard('admin')->user()->created_at }}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <a href="dashboard.html">
-                                                <button type="button" class="btn btn-secondary"
-                                                    style="margin-left: 40%; margin-top: 3%;"><i
-                                                        class="feather mr-2 icon-home"></i>Back to Homepage
-                                                </button>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-info-wrapper">
+                    <img src="{{ asset('/uploads/admin.jpg') }}"
+                        style="max-width: 257px; max-height: 257px;" class="profile-picture" alt="User-Image">
+                    <div class="profile-info">
+                        <h2>{{ Auth::guard('admin')->user()->name }}</h2>
+                        <span class="profile-info-label">Email : {{ Auth::guard('admin')->user()->email }}</span>
+                        <span class="profile-info-label">Role : admin</span>
+                        <span class="profile-info-label">Joined : {{ Auth::guard('admin')->user()->created_at }} </span>
                     </div>
                 </div>
             </div>
+
+        </div>
+
+        <div style="margin-left: 35%;margin-top: 2%;">
+            <a href="#!">
+                <button type="button" class="btn btn-secondary"><i class="feather mr-2 icon-home"></i>Back to Homepage
+                </button>
+            </a>
         </div>
     </div>
+</div>
 
-</section>
+</div>
 
 @endsection
 

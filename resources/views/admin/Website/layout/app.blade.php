@@ -14,6 +14,7 @@
     <!-- vendor css -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" >
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" >
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}" >
     
     <link rel="stylesheet" href="{{ asset('css/ace.min.css') }}" class="ace-main-stylesheet" id="main-ace-style" />
 
