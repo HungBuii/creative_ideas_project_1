@@ -12,15 +12,24 @@
 
 
     <!-- vendor css -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}" >
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" >
-    <link rel="stylesheet" href="{{ asset('css/profile.css') }}" >
-    
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+
     <link rel="stylesheet" href="{{ asset('css/ace.min.css') }}" class="ace-main-stylesheet" id="main-ace-style" />
 
 </head>
 
 <body class="">
+
+    @if (session()->get('success'))
+    <div class="text-success">{{ session()->get('success') }}</div>
+    @endif
+
+    @if (session()->get('error'))
+    <div class="text-danger">{{ session()->get('error') }}</div>
+    @endif
+
     @include('admin.Website.layout.top_bar')
 
     @include('admin.website.layout.sidebar')

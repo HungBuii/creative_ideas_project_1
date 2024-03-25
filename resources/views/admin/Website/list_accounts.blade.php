@@ -30,8 +30,9 @@
                     </div>
                     <div class="card-body table-border-style d-flex justify-content-between align-items-center">
                         <div class="table-responsive">
-                            <a href="{{ route('admin_add_account') }}" <button type="button" class="btn btn-success" style="float:right" ;><i
-                                    class="feather mr-2 icon-plus-circle"></i>Add an account</button></a>
+                            <a href="{{ route('admin_add_account') }}" <button type="button" class="btn btn-success"
+                                style="float:right" ;><i class="feather mr-2 icon-plus-circle"></i>Add an
+                                account</button></a>
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -44,19 +45,68 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php
+                                    $i = 1
+                                    @endphp
+                                    @foreach ($managers as $manager)
                                     <tr>
-                                        <td>1</td>
-                                        <td>Ubuntu</td>
-                                        <td>null</td>
-                                        <td>mdo</td>
-                                        <td>mdo</td>
+                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $manager->name }}</td>
                                         <td>
-                                            <a href="{{ route('admin_edit_account') }}"><button type="button" class="btn btn-info"><i
+                                            <img src="{{ asset('/uploads/'.$manager->photo) }}" alt="">
+                                        </td>
+                                        <td>{{ $manager->email }}</td>
+                                        <td>{{ $manager->role }}</td>
+                                        <td>
+                                            <a href="{{ route('admin_edit_account_manager', $manager->id) }}"><button
+                                                    type="button" class="btn btn-info"><i
+                                                        class="feather mr-2 icon-edit"></i>Edit</button></a>
+                                            <button type="button" class="btn btn-danger">
+                                                <a href="{{ route('admin_delete_account_manager_submit', $manager->id) }}"
+                                                    class="feather mr-2 icon-trash">Delete</a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+
+                                    @foreach ($coordinators as $coordinator)
+                                    <tr>
+                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $coordinator->name }}</td>
+                                        <td>
+                                            <img src="{{ asset('/uploads/'.$coordinator->photo) }}" alt="">
+                                        </td>
+                                        <td>{{ $coordinator->email }}</td>
+                                        <td>{{ $coordinator->role }}</td>
+                                        <td>
+                                            <a href="{{ route('admin_edit_account') }}"><button type="button"
+                                                    class="btn btn-info"><i
                                                         class="feather mr-2 icon-edit"></i>Edit</button></a>
                                             <button type="button" class="btn btn-danger"><i
                                                     class="feather mr-2 icon-trash"></i>Delete</button>
                                         </td>
                                     </tr>
+                                    @endforeach
+
+                                    @foreach ($students as $student)
+                                    <tr>
+                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $student->name }}</td>
+                                        <td>
+                                            <img src="{{ asset('/uploads/'.$student->photo) }}" alt="">
+                                        </td>
+                                        <td>{{ $student->email }}</td>
+                                        <td>{{ $student->role }}</td>
+                                        <td>
+                                            <a href="{{ route('admin_edit_account') }}"><button type="button"
+                                                    class="btn btn-info"><i
+                                                        class="feather mr-2 icon-edit"></i>Edit</button></a>
+                                            <button type="button" class="btn btn-danger"><i
+                                                    class="feather mr-2 icon-trash"></i>Delete</button>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+
                                 </tbody>
                             </table>
                         </div>

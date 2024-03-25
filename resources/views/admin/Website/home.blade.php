@@ -38,7 +38,7 @@
             <div class="card"
                 style="width: 300px; margin: 10px; padding: 20px; border: 1px solid #ccc; border-radius: 5px; text-align: center;">
                 <img class="img-fluid card-img-top"
-                    src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/365510167_679482324213284_7201273950306337203_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=10fPelVv3swAX8my-2Y&_nc_ht=scontent.fhan15-2.fna&oh=00_AfDJbZ5Y5YgJfPxt6hK6BA3XQYY6So75OC_jmSQLXpRoQQ&oe=6600BB76"
+                    src="https://greenwich.edu.vn/wp-content/uploads/2022/07/2.jpeg"
                     alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Student Commendation Awards</h5>

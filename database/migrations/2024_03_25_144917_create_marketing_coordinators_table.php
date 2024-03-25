@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('photo')->nullable();
+            $table->string('role')->default('Marketing Coordinator');
             $table->integer('faculty_id')->nullable();
             $table->timestamps();
         });
