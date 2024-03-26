@@ -51,8 +51,8 @@
                         </div>
                         <div class="col-md-6">
                             <form>    
-                                        <img alt="No image" src="{{ asset('uploads/admin.jpg') }}" class="img-radius" style="max-width: 50px; max-height: 50px">
-                                        <span>{{ Auth::guard('admin')->user()->name }}</span> 
+                                        <img alt="No image" src="https://wallpapers-clan.com/wp-content/uploads/2023/02/anime-boy-black-pfp-28.jpg" class="img-radius" style="max-width: 50px; max-height: 50px">
+                                        <span>User X</span> 
                                         <p>
                                             <i class="feather mr-2 icon-calendar""></i>
                                             Created on <b>March-26-2024 - 04-38-00 p.m</b>
