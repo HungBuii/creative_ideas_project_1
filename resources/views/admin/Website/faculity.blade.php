@@ -67,7 +67,7 @@
                                         <button class="btn btn-primary event-btn m-2" type="button">
                                             <span class="spinner-border spinner-border-sm" role="status"></span>
                                             <span class="load-text">Loading...</span>
-                                            <span class="btn-text">Download file (as . zip)</span>
+                                            <span class="btn-text"><i class="feather mr-2 icon-download"></i>Download file (as . zip)</span>
                                         </button>
                                         </a>
                                     </div>
