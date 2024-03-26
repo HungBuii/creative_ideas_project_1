@@ -43,3 +43,10 @@ Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin_p
 
 
 /* Marketing Manager */
+
+
+
+//test
+Route::get('/hehe', function () {
+    return view('admin.Website.add_events');
+});

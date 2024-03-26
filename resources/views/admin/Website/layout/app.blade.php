@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" >
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" >
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}" >
+    <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}" >
 </head>
 
 <body class="">
