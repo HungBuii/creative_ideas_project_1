@@ -50,3 +50,7 @@ Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin_p
 Route::get('/hehe', function () {
     return view('admin.Website.add_events');
 });
+
+Route::get('/fac', function () {
+    return view('admin.Website.faculity');
+});
