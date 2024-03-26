@@ -32,7 +32,7 @@
                                     <i class="icon feather icon-eye text-c-green mb-1 d-block"></i>
                                 </div>
                                 <div class="col-sm-4 text-md-center">
-                                    <h5>200</h5>
+                                    <h5>{{ $students }}</h5>
                                     <span>Students</span>
                                 </div>
                             </div>
@@ -88,7 +88,7 @@
                                     <i class="icon feather icon-share-2 text-c-blue mb-1 d-block"></i>
                                 </div>
                                 <div class="col-sm-5 text-md-center">
-                                    <h5>15</h5>
+                                    <h5>{{ $managers }}</h5>
                                     <span>Marketing Managers</span>
                                 </div>
                             </div>
@@ -132,7 +132,7 @@
                                     <i class="icon feather icon-eye text-c-green mb-1 d-block"></i>
                                 </div>
                                 <div class="col-sm-4 text-md-center">
-                                    <h5>20</h5>
+                                    <h5>{{ $coordinators }}</h5>
                                     <span>Coordinator</span>
                                 </div>
                             </div>

@@ -84,7 +84,10 @@ class AdminController extends Controller
     // Dashboard view
     public function dashboard()
     {
-        return view('admin.Website.dashboard');
+        $managers = MarketingManager::count();
+        $coordinators = MarketingCoordinator::count();
+        $students = Student::count();
+        return view('admin.Website.dashboard', compact('managers', 'coordinators', 'students'));
     }
 
     /* ----------------------------------------------*/
@@ -254,6 +257,113 @@ class AdminController extends Controller
         $single_manager->delete();
 
         return redirect()->route('admin_list_accounts')->with('success', 'Deleted an Marketing Manager account successfully!');
+    }
+
+    // edit account coordinator view
+    public function edit_account_coordinator($id)
+    {
+        $single_coordinator = MarketingCoordinator::where('id', $id)->first();
+        return view('admin.Website.edit_account_coordinator', compact('single_coordinator'));
+    }
+
+    // edit account coordinator submit
+    public function edit_account_coordinator_submit(Request $request, $id)
+    {
+        $current_single_coordinator = MarketingCoordinator::where('id', $id)->first();
+
+        $request->validate([
+            'email' => 'email:rfc,dns',
+        ]);
+
+        if ($request->hasFile('photo'))
+        {
+            $request->validate([
+                'photo' => 'image|mimes:jpg,jpeg,png,gif',
+            ]);
+
+            if (file_exists( public_path('uploads/'.$current_single_coordinator->photo) ) and (!empty($current_single_coordinator->photo)) )
+            {
+                unlink(public_path('uploads/' . $current_single_coordinator->photo));
+            }
+            
+            $ext = $request->file('photo')->extension();
+            $photo_name = time() . '.' . $ext;
+
+            $request->file('photo')->move(public_path('uploads/'), $photo_name);
+            $current_single_coordinator->photo = $photo_name;
+        }
+
+        $current_single_coordinator->name = $request->name;
+        $current_single_coordinator->password = Hash::make($request->password);
+        $current_single_coordinator->email = $request->email;
+
+        $current_single_coordinator->update();
+
+        return redirect()->back()->with('success', 'Updated an Marketing Coordinator account successfully!');
+
+    }
+
+    // Delete a Marketing Coordinator account
+    public function delete_account_coordinator_submit($id)
+    {
+        $single_coordinator = MarketingCoordinator::where('id', $id)->first();
+        unlink(public_path('uploads/' . $single_coordinator->photo));
+        $single_coordinator->delete();
+
+        return redirect()->route('admin_list_accounts')->with('success', 'Deleted an Marketing Coordinator account successfully!');
+    }
+
+    // edit account student view
+    public function edit_account_student($id)
+    {
+        $single_student = Student::where('id', $id)->first();
+        return view('admin.Website.edit_account_student', compact('single_student'));
+    }
+
+    public function edit_account_student_submit(Request $request, $id)
+    {
+        $current_single_student = Student::where('id', $id)->first();
+
+        $request->validate([
+            'email' => 'email:rfc,dns',
+        ]);
+
+        if ($request->hasFile('photo'))
+        {
+            $request->validate([
+                'photo' => 'image|mimes:jpg,jpeg,png,gif',
+            ]);
+
+            if (file_exists( public_path('uploads/'.$current_single_student->photo) ) and (!empty($current_single_student->photo)) )
+            {
+                unlink(public_path('uploads/' . $current_single_student->photo));
+            }
+            
+            $ext = $request->file('photo')->extension();
+            $photo_name = time() . '.' . $ext;
+
+            $request->file('photo')->move(public_path('uploads/'), $photo_name);
+            $current_single_student->photo = $photo_name;
+        }
+
+        $current_single_student->name = $request->name;
+        $current_single_student->password = Hash::make($request->password);
+        $current_single_student->email = $request->email;
+
+        $current_single_student->update();
+
+        return redirect()->back()->with('success', 'Updated an Student account successfully!');
+
+    }
+
+    // Delete a Marketing Coordinator account
+    public function delete_account_student_submit($id)
+    {
+        $single_student = Student::where('id', $id)->first();
+        unlink(public_path('uploads/' . $single_student->photo));
+        $single_student->delete();
+
+        return redirect()->route('admin_list_accounts')->with('success', 'Deleted an Student account successfully!');
     }
 
     /* ----------------------------------------------*/

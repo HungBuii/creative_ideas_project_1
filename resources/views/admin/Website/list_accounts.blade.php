@@ -79,11 +79,13 @@
                                         <td>{{ $coordinator->email }}</td>
                                         <td>{{ $coordinator->role }}</td>
                                         <td>
-                                            <a href="{{ route('admin_edit_account') }}"><button type="button"
-                                                    class="btn btn-info"><i
+                                            <a href="{{ route('admin_edit_account_coordinator', $coordinator->id) }}"><button
+                                                    type="button" class="btn btn-info"><i
                                                         class="feather mr-2 icon-edit"></i>Edit</button></a>
-                                            <button type="button" class="btn btn-danger"><i
-                                                    class="feather mr-2 icon-trash"></i>Delete</button>
+                                            <button type="button" class="btn btn-danger">
+                                                <a href="{{ route('admin_delete_account_coordinator_submit', $coordinator->id) }}"
+                                                    class="feather mr-2 icon-trash">Delete</a>
+                                            </button>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -98,11 +100,13 @@
                                         <td>{{ $student->email }}</td>
                                         <td>{{ $student->role }}</td>
                                         <td>
-                                            <a href="{{ route('admin_edit_account') }}"><button type="button"
-                                                    class="btn btn-info"><i
+                                            <a href="{{ route('admin_edit_account_student', $student->id) }}"><button
+                                                    type="button" class="btn btn-info"><i
                                                         class="feather mr-2 icon-edit"></i>Edit</button></a>
-                                            <button type="button" class="btn btn-danger"><i
-                                                    class="feather mr-2 icon-trash"></i>Delete</button>
+                                            <button type="button" class="btn btn-danger">
+                                                <a href="{{ route('admin_delete_account_student_submit', $student->id) }}"
+                                                    class="feather mr-2 icon-trash">Delete</a>
+                                            </button>
                                         </td>
                                     </tr>
                                     @endforeach

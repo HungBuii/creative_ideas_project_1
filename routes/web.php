@@ -35,11 +35,17 @@ Route::get('/admin/list-accounts', [AdminController::class, 'list_accounts'])->n
 Route::get('/admin/add-account', [AdminController::class, 'add_account'])->name('admin_add_account'); // Add an account view
 Route::post('/admin/add-account-submit', [AdminController::class, 'add_account_submit'])->name('admin_add_account_submit'); // Add an account submit
 
-Route::get('/admin/edit-account', [AdminController::class, 'edit_account'])->name('admin_edit_account'); // Edit an account view
-Route::get('/admin/edit-account/manager/{id}', [AdminController::class, 'edit_account_manager'])->name('admin_edit_account_manager'); // Edit a manager account
-Route::post('/admin/edit-account/manager/{id}/update', [AdminController::class, 'edit_account_manager_submit'])->name('admin_edit_account_manager_submit'); // Edit a manager account submit
+// Route::get('/admin/edit-account', [AdminController::class, 'edit_account'])->name('admin_edit_account'); // Edit an account view
 
+Route::get('/admin/edit-account/manager/{id}', [AdminController::class, 'edit_account_manager'])->name('admin_edit_account_manager'); // Edit a manager account view
+Route::post('/admin/edit-account/manager/{id}/update', [AdminController::class, 'edit_account_manager_submit'])->name('admin_edit_account_manager_submit'); // Edit a manager account submit
 Route::get('/admin/delete-account/manager/{id}', [AdminController::class, 'delete_account_manager_submit'])->name('admin_delete_account_manager_submit'); // Delete a manager account
+Route::get('/admin/edit-account/coordinator/{id}', [AdminController::class, 'edit_account_coordinator'])->name('admin_edit_account_coordinator'); // Edit a coordinator account view
+Route::post('/admin/edit-account/coordinator/{id}/update', [AdminController::class, 'edit_account_coordinator_submit'])->name('admin_edit_account_coordinator_submit'); // Edit a coordinator account submit
+Route::get('/admin/delete-account/coordinator/{id}', [AdminController::class, 'delete_account_coordinator_submit'])->name('admin_delete_account_coordinator_submit'); // Delete a coordinator account
+Route::get('/admin/edit-account/student/{id}', [AdminController::class, 'edit_account_student'])->name('admin_edit_account_student'); // Edit a student account view
+Route::post('/admin/edit-account/student/{id}/update', [AdminController::class, 'edit_account_student_submit'])->name('admin_edit_account_student_submit'); // Edit a student account submit
+Route::get('/admin/delete-account/student/{id}', [AdminController::class, 'delete_account_student_submit'])->name('admin_delete_account_student_submit'); // Delete a student account
 
 
 Route::get('/admin/events', [AdminController::class, 'events'])->name('admin_events'); // Events view
