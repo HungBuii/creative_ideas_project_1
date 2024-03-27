@@ -63,19 +63,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- widget primary card start -->
-                <div class="card flat-card widget-primary-card">
-                    <div class="row-table">
-                        <div class="col-sm-3 card-body">
-                            <i class="feather icon-user"></i>
-                        </div>
-                        <div class="col-sm-9">
-                            <h4>15 +</h4>
-                            <h6>New students</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- widget primary card end -->
             </div>
             <!-- table card-1 end -->
             <!-- table card-2 start -->
@@ -87,7 +74,7 @@
                                 <div class="col-sm-4">
                                     <i class="icon feather icon-share-2 text-c-blue mb-1 d-block"></i>
                                 </div>
-                                <div class="col-sm-5 text-md-center">
+                                <div class="col-sm-5 text-md-center"">
                                     <h5>{{ $managers }}</h5>
                                     <span>Marketing Managers</span>
                                 </div>
@@ -100,27 +87,14 @@
                                 <div class="col-sm-4">
                                     <i class="icon feather icon-file-text text-c-blue mb-1 d-block"></i>
                                 </div>
-                                <div class="col-sm-4 text-md-center">
-                                    <h5 style="margin-left: 40px;">15</h5>
-                                    <span style="margin-left: 40px;">Post Approved</span>
+                                <div class="col-sm-4 text-md-center" style="text-align: center">
+                                    <h5>15</h5>
+                                    <span>Post Approved</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- widget-success-card start -->
-                <div class="card flat-card widget-purple-card">
-                    <div class="row-table">
-                        <div class="col-sm-3 card-body">
-                            <i class="feather icon-user"></i>
-                        </div>
-                        <div class="col-sm-9">
-                            <h4>2 +</h4>
-                            <h6>New Marketing Managers</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- widget-success-card end -->
             </div>
             <!-- table card-2 end -->
             <div class="col-md-12 col-xl-4">
@@ -163,19 +137,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- widget primary card start -->
-                <div class="card flat-card widget-primary-card">
-                    <div class="row-table">
-                        <div class="col-sm-3 card-body">
-                            <i class="feather icon-user"></i>
-                        </div>
-                        <div class="col-sm-9">
-                            <h4>15 +</h4>
-                            <h6>New Marketing Coordinator</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- widget primary card end -->
             </div>
 
             <!-- prject ,team member start -->

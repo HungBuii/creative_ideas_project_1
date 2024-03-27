@@ -53,7 +53,7 @@
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $manager->name }}</td>
                                         <td>
-                                            <img src="{{ asset('/uploads/'.$manager->photo) }}" alt="">
+                                            <img src="{{ asset('/uploads/'.$manager->photo) }}" style="max-width: 257px; max-height: 257px;"  alt="Manager-Image">
                                         </td>
                                         <td>{{ $manager->email }}</td>
                                         <td>{{ $manager->role }}</td>
@@ -74,7 +74,7 @@
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $coordinator->name }}</td>
                                         <td>
-                                            <img src="{{ asset('/uploads/'.$coordinator->photo) }}" alt="">
+                                            <img src="{{ asset('/uploads/'.$coordinator->photo) }}" style="max-width: 257px; max-height: 257px;" alt="Coordinator-Image">
                                         </td>
                                         <td>{{ $coordinator->email }}</td>
                                         <td>{{ $coordinator->role }}</td>
@@ -95,7 +95,7 @@
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $student->name }}</td>
                                         <td>
-                                            <img src="{{ asset('/uploads/'.$student->photo) }}" alt="">
+                                            <img src="{{ asset('/uploads/'.$student->photo) }}" style="max-width: 257px; max-height: 257px;" alt="Student-Image">
                                         </td>
                                         <td>{{ $student->email }}</td>
                                         <td>{{ $student->role }}</td>
@@ -103,10 +103,10 @@
                                             <a href="{{ route('admin_edit_account_student', $student->id) }}"><button
                                                     type="button" class="btn btn-info"><i
                                                         class="feather mr-2 icon-edit"></i>Edit</button></a>
-                                            <button type="button" class="btn btn-danger">
-                                                <a href="{{ route('admin_delete_account_student_submit', $student->id) }}"
-                                                    class="feather mr-2 icon-trash">Delete</a>
-                                            </button>
+                                           
+                                            <a href="{{ route('admin_delete_account_student_submit', $student->id) }}"> 
+                                                <button type="button" class="btn btn-danger"><i class="feather mr-2 icon-trash"></i>Delete</button></a>
+                                            
                                         </td>
                                     </tr>
                                     @endforeach

@@ -35,11 +35,12 @@
                     <h5>Add a user</h5>
                     <hr>
                     <div class="row">
-                        <form action="{{ route('admin_add_account_submit') }}" method="POST"
-                            enctype="multipart/form-data">
-                            @csrf
                             <div class="col-md-6">
+                                <form action="{{ route('admin_add_account_submit') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group">
+                                    
                                     <label>Name</label>
                                     <input type="text" class="form-control" name="name" placeholder="Enter Name">
                                     @error('name')
