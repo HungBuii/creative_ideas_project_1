@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('faculties', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('student_id')->nullable();
+            $table->string('description');
+            $table->date('date_start');
+            $table->date('date_end');
+            $table->integer('coordinator_id')->nullable();
             $table->timestamps();
         });
     }

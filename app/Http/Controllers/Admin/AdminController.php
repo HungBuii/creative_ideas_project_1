@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Admin;
+use App\Models\Faculty;
 use App\Models\MarketingCoordinator;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -118,8 +119,7 @@ class AdminController extends Controller
 
         $select_role = $request->input('role');
 
-        if ($select_role == 'Marketing Manager') 
-        {
+        if ($select_role == 'Marketing Manager') {
             $current_managers = MarketingManager::where('email', $request->email)->first();
             if ($current_managers) {
                 return redirect()->route('admin_add_account')->with('error', 'This email already exists!');
@@ -146,8 +146,7 @@ class AdminController extends Controller
 
         }
 
-        if ($select_role == 'Marketing Coordinator') 
-        {
+        if ($select_role == 'Marketing Coordinator') {
             $current_coordinators = MarketingCoordinator::where('email', $request->email)->first();
             if ($current_coordinators) {
                 return redirect()->route('admin_add_account')->with('error', 'This email already exists!');
@@ -174,8 +173,7 @@ class AdminController extends Controller
 
         }
 
-        if ($select_role == 'Student') 
-        {
+        if ($select_role == 'Student') {
             $current_students = Student::where('email', $request->email)->first();
             if ($current_students) {
                 return redirect()->route('admin_add_account')->with('error', 'This email already exists!');
@@ -221,17 +219,15 @@ class AdminController extends Controller
             'email' => 'email:rfc,dns',
         ]);
 
-        if ($request->hasFile('photo'))
-        {
+        if ($request->hasFile('photo')) {
             $request->validate([
                 'photo' => 'image|mimes:jpg,jpeg,png,gif',
             ]);
 
-            if (file_exists( public_path('uploads/'.$current_single_manager->photo) ) and (!empty($current_single_manager->photo)) )
-            {
+            if (file_exists(public_path('uploads/' . $current_single_manager->photo)) and (!empty($current_single_manager->photo))) {
                 unlink(public_path('uploads/' . $current_single_manager->photo));
             }
-            
+
             $ext = $request->file('photo')->extension();
             $photo_name = time() . '.' . $ext;
 
@@ -275,17 +271,15 @@ class AdminController extends Controller
             'email' => 'email:rfc,dns',
         ]);
 
-        if ($request->hasFile('photo'))
-        {
+        if ($request->hasFile('photo')) {
             $request->validate([
                 'photo' => 'image|mimes:jpg,jpeg,png,gif',
             ]);
 
-            if (file_exists( public_path('uploads/'.$current_single_coordinator->photo) ) and (!empty($current_single_coordinator->photo)) )
-            {
+            if (file_exists(public_path('uploads/' . $current_single_coordinator->photo)) and (!empty($current_single_coordinator->photo))) {
                 unlink(public_path('uploads/' . $current_single_coordinator->photo));
             }
-            
+
             $ext = $request->file('photo')->extension();
             $photo_name = time() . '.' . $ext;
 
@@ -328,17 +322,15 @@ class AdminController extends Controller
             'email' => 'email:rfc,dns',
         ]);
 
-        if ($request->hasFile('photo'))
-        {
+        if ($request->hasFile('photo')) {
             $request->validate([
                 'photo' => 'image|mimes:jpg,jpeg,png,gif',
             ]);
 
-            if (file_exists( public_path('uploads/'.$current_single_student->photo) ) and (!empty($current_single_student->photo)) )
-            {
+            if (file_exists(public_path('uploads/' . $current_single_student->photo)) and (!empty($current_single_student->photo))) {
                 unlink(public_path('uploads/' . $current_single_student->photo));
             }
-            
+
             $ext = $request->file('photo')->extension();
             $photo_name = time() . '.' . $ext;
 
@@ -368,10 +360,75 @@ class AdminController extends Controller
 
     /* ----------------------------------------------*/
 
-    // Events
-    public function events()
+    // List faculties
+    public function list_faculties()
     {
-        return view('admin.Website.events');
+        $faculties = Faculty::get();
+        return view('admin.Website.list_faculties', compact('faculties'));
+    }
+
+    // Add faculty view
+    public function add_faculty()
+    {
+        $coordinators = MarketingCoordinator::get();
+        return view('admin.Website.add_faculty', compact('coordinators'));
+    }
+
+    // Add faculty submit
+    public function add_faculty_submit(Request $request)
+    {
+        $exist_faculty = Faculty::where('name', $request->name)->first();
+        if ($exist_faculty) {
+            return redirect()->route('admin_add_faculty')->with('error', 'This Faculty already exists!');
+        } else {
+            $new_faculty = new Faculty();
+            $new_faculty->name = $request->name;
+            $new_faculty->description = $request->description;
+            $new_faculty->date_start = $request->date_start;
+            $new_faculty->date_end = $request->date_end;
+
+            $select_coordinator = $request->input('coordinator');
+            $coordinator = MarketingCoordinator::where('name', $select_coordinator)->first();
+            $new_faculty->coordinator_id = $coordinator->id;
+
+            $new_faculty->save();
+        }
+        return redirect()->route('admin_add_faculty')->with('success', 'Added a faculty successfully!');
+    }
+
+    // Edit faculty view
+    public function edit_faculty($id)
+    {
+        $single_faculty = Faculty::where('id', $id)->first();
+        $coordinators = MarketingCoordinator::get();
+        return view('admin.Website.edit_faculty', compact('single_faculty', 'coordinators'));
+    }
+
+    // Edit faculty submit
+    public function edit_faculty_submit(Request $request, $id)
+    {
+        $single_faculty = Faculty::where('id', $id)->first();
+        $single_faculty->name = $request->name;
+        $single_faculty->description = $request->description;
+        $single_faculty->date_start = $request->date_start;
+        $single_faculty->date_end = $request->date_end;
+
+        $select_coordinator = $request->input('coordinator');
+        $coordinator = MarketingCoordinator::where('name', $select_coordinator)->first();
+        $single_faculty->coordinator_id = $coordinator->id;
+
+        $single_faculty->update();
+
+        return redirect()->route('admin_edit_faculty', $single_faculty->id)->with('success', 'Updated a faculty successfully!');
+    }
+
+    // Delete faculty submit
+    public function delete_faculty_submit($id)
+    {
+        $single_faculty = Faculty::where('id', $id)->first();
+        $single_faculty->delete();
+
+        return redirect()->route('admin_faculties')->with('success', 'Deleted a faculty successfully!');
     }
 
     /* ----------------------------------------------*/
