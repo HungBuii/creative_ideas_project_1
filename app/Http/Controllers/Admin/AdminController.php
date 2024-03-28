@@ -455,4 +455,15 @@ class AdminController extends Controller
     }
 
     /* ----------------------------------------------*/
+
+    // List ideas
+    public function list_ideas($id)
+    {
+        $single_faculty = Faculty::where('id', $id)->first();
+        return view('admin.Website.list_ideas', compact('single_faculty'));
+    }
+
+
+    /* ----------------------------------------------*/
+
 }

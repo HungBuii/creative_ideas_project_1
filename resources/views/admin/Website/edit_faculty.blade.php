@@ -66,6 +66,7 @@
                                     </div>
                                 </div>
                                 <label>Select a Marketing Coordinator</label>
+                                <p>Previous Marketing Coordinator: {{ $single_faculty->coordinator->name }}</p>
                                 <div class="input-group mb-3">
                                     <select class="custom-select" id="inputGroupSelect01" name="coordinator">
                                         @foreach ($coordinators as $coordinator)

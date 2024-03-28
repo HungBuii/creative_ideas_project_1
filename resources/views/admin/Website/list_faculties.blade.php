@@ -48,22 +48,55 @@
                                     @foreach ($faculties as $faculty)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $faculty->name }}</td>
+                                        <td><a href="{{ route('admin_ideas', $faculty->id) }}">{{ $faculty->name }}</a></td>
                                         <td>{{ $faculty->description }}</td>
                                         <td>{{ $faculty->date_start }}</td>
                                         <td>{{ $faculty->date_end }}</td>
                                         <td>{{ $faculty->coordinator->name }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-secondary"><i
-                                                    class="feather mr-2 icon-info"></i>View info</button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#exampleModalCenter"><i
+                                                    class="feather mr-2 icon-info"></i>View info
+                                            </button>
+
                                             <a href="{{ route('admin_edit_faculty', $faculty->id) }}"><button
                                                     type="button" class="btn btn-info"><i
-                                                        class="feather mr-2 icon-edit"></i>Edit</button></a>
+                                                        class="feather mr-2 icon-edit"></i>Edit</button>
+                                            </a>
+
                                             <button type="button" class="btn btn-danger">
-                                                <a href="{{ route('admin_delete_faculty_submit', $faculty->id) }}">Delete</a>
-                                                </button>
+                                                <a
+                                                    href="{{ route('admin_delete_faculty_submit', $faculty->id) }}">Delete</a>
+                                            </button>
                                         </td>
                                     </tr>
+
+                                    <div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Description
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span
+                                                            aria-hidden="true">&times;</span></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p class="mb-0" style="word-wrap: break-word;">{{
+                                                        $faculty->description }}</p>
+                                                    <br>
+                                                    <p class="mb-0" style="word-wrap: break-word;">Coordinator
+                                                        assigned : <b>{{ $faculty->coordinator->name }}</b></p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn  btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     @endforeach
                                 </tbody>
                             </table>

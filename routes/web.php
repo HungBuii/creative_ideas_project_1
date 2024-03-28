@@ -58,6 +58,8 @@ Route::post('/admin/edit-faculty/{id}/update', [AdminController::class, 'edit_fa
 
 Route::get('/admin/delete-faculty/{id}', [AdminController::class, 'delete_faculty_submit'])->name('admin_delete_faculty_submit')->middleware('admin:admin'); // Delete a faculty 
 
+Route::get('/admin/faculty/{id}/list-ideas', [AdminController::class, 'list_ideas'])->name('admin_ideas')->middleware('admin:admin'); // List ideas view
+
 
 Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin_profile')->middleware('admin:admin'); // Profile view
 
