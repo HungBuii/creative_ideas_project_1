@@ -33,9 +33,9 @@
                     <h5>Add a faculty</h5>
                     <hr>
                     <div class="row">
-                        <form action="{{ route('admin_add_faculty_submit') }}" method="POST">
-                            @csrf
-                            <div class="col-md-6">
+                        <div class="col-md-6">
+                            <form action="{{ route('admin_add_faculty_submit') }}" method="POST">
+                                @csrf
                                 <div class="form-group">
                                     <label>Faculity Name</label>
                                     <input type="text" class="form-control" placeholder="Enter Name" name="name">
@@ -50,30 +50,30 @@
                                     </textarea>
                                 </div>
                                 <button type="submit" class="btn  btn-primary">Submit</button>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Select Date</label>
-                                <div class="input-group mb-3">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Select Date</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text">Date Start</label>
+                                    <input type="date" name="date_start">
+                                </div>
+                                <div style="margin-left: 5%">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text">Date Start</label>
-                                        <input type="date" name="date_start">
+                                        <label class="input-group-text">Date End</label>
+                                        <input type="date" name="date_end">
                                     </div>
-                                    <div style="margin-left: 5%">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text">Date End</label>
-                                            <input type="date" name="date_end">
-                                        </div>
-                                    </div>
-                                </div>
-                                <label>Select a Marketing Coordinator</label>
-                                <div class="input-group mb-3">
-                                    <select class="custom-select" id="inputGroupSelect01" name="coordinator">
-                                        @foreach ($coordinators as $coordinator)
-                                        <option selected>{{ $coordinator->name }}</option>
-                                        @endforeach
-                                    </select>
                                 </div>
                             </div>
+                            <label>Select a Marketing Coordinator</label>
+                            <div class="input-group mb-3">
+                                <select class="custom-select" id="inputGroupSelect01" name="coordinator">
+                                    @foreach ($coordinators as $coordinator)
+                                    <option selected>{{ $coordinator->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         </form>
                     </div>
                 </div>

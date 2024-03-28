@@ -32,10 +32,11 @@
                         <h5>Edit {{ $single_manager->name }}'s account</h5>
                         <hr>
                         <div class="row">
-                            <form action="{{ route('admin_edit_account_manager_submit', $single_manager->id) }}"
-                                method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="col-md-6">
+
+                            <div class="col-md-6">
+                                <form action="{{ route('admin_edit_account_manager_submit', $single_manager->id) }}"
+                                    method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="form-group">
                                         <label>Name</label>
                                         <input type="text" class="form-control" placeholder="Enter Name" name="name"
@@ -56,15 +57,15 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="btn  btn-primary">Update</button>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Email address</label>
+                                    <input type="email" class="form-control" name="email" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" placeholder="Enter email"
+                                        value="{{ $single_manager->email }}">
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Email address</label>
-                                        <input type="email" class="form-control" name="email" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp" placeholder="Enter email"
-                                            value="{{ $single_manager->email }}">
-                                    </div>
-                                </div>
+                            </div>
                             </form>
                         </div>
                     </div>

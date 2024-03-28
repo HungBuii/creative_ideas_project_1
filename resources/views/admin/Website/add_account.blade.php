@@ -35,10 +35,10 @@
                     <h5>Add a user</h5>
                     <hr>
                     <div class="row">
-                        <form action="{{ route('admin_add_account_submit') }}" method="POST"
-                            enctype="multipart/form-data">
-                            @csrf
-                            <div class="col-md-6">
+                        <div class="col-md-6">
+                            <form action="{{ route('admin_add_account_submit') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group">
                                     <label>Name</label>
                                     <input type="text" class="form-control" name="name" placeholder="Enter Name">
@@ -65,29 +65,30 @@
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Email address</label>
+                                <input type="email" class="form-control" name="email" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="Enter email">
+                                @error('email')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Email address</label>
-                                    <input type="email" class="form-control" name="email" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="Enter email">
-                                    @error('email')
-                                    <div class="text-danger">{{ $message }}</div>
-                                    @enderror
+                            <label>Select a Role</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Role</label>
                                 </div>
-                                <label>Select a Role</label>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Role</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect01" name="role">
-                                        <option selected>Marketing Manager</option>
-                                        <option selected>Marketing Coordinator</option>
-                                        <option selected>Student</option>
-                                    </select>
-                                </div>
+                                <select class="custom-select" id="inputGroupSelect01" name="role">
+                                    <option selected>Marketing Manager</option>
+                                    <option selected>Marketing Coordinator</option>
+                                    <option selected>Student</option>
+                                </select>
                             </div>
                         </form>
+                        </div>
                     </div>
                 </div>
             </div>

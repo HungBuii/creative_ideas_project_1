@@ -32,10 +32,11 @@
                         <h5>Edit {{ $single_coordinator->name }}'s account</h5>
                         <hr>
                         <div class="row">
-                            <form action="{{ route('admin_edit_account_coordinator_submit', $single_coordinator->id) }}"
-                                method="POST" enctype="multipart/form-data">
-                                @csrf
+                            
                                 <div class="col-md-6">
+                                    <form action="{{ route('admin_edit_account_coordinator_submit', $single_coordinator->id) }}"
+                                        method="POST" enctype="multipart/form-data">
+                                        @csrf
                                     <div class="form-group">
                                         <label>Name</label>
                                         <input type="text" class="form-control" placeholder="Enter Name" name="name"
