@@ -39,6 +39,9 @@
                                 <div class="form-group">
                                     <label>Faculity Name</label>
                                     <input type="text" class="form-control" placeholder="Enter Name" name="name">
+                                    @error('name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>

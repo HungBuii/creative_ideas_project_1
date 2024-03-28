@@ -377,6 +377,10 @@ class AdminController extends Controller
     // Add faculty submit
     public function add_faculty_submit(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+        ]);
+
         $exist_faculty = Faculty::where('name', $request->name)->first();
         if ($exist_faculty) {
             return redirect()->route('admin_add_faculty')->with('error', 'This Faculty already exists!');
@@ -389,6 +393,10 @@ class AdminController extends Controller
 
             $select_coordinator = $request->input('coordinator');
             $coordinator = MarketingCoordinator::where('name', $select_coordinator)->first();
+            $check_current_coordinator = Faculty::where('coordinator_id', $coordinator->id)->first();
+            if ($check_current_coordinator) {
+                return redirect()->route('admin_add_faculty')->with('error', 'This teacher was in charge of another faculty!');
+            }
             $new_faculty->coordinator_id = $coordinator->id;
 
             $new_faculty->save();
@@ -415,7 +423,22 @@ class AdminController extends Controller
 
         $select_coordinator = $request->input('coordinator');
         $coordinator = MarketingCoordinator::where('name', $select_coordinator)->first();
-        $single_faculty->coordinator_id = $coordinator->id;
+        if ($single_faculty->coordinator_id == $coordinator->id)
+        {
+            $single_faculty->coordinator_id = $coordinator->id;
+        }
+        else
+        {
+            $check_current_coordinator = Faculty::where('coordinator_id', $coordinator->id)->first();
+            if ($check_current_coordinator) {
+                return redirect()->route('admin_edit_faculty', $single_faculty->id)->with('error', 'This teacher was in charge of another faculty!');
+            }
+            else
+            {
+                $single_faculty->coordinator_id = $coordinator->id;
+            }
+        }
+
 
         $single_faculty->update();
 
