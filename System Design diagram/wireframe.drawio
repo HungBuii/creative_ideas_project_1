@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-03-30T11:20:34.008Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 OPR/107.0.0.0" etag="NGabR5BYDsWCIloZQUh0" version="24.2.1" type="github">
+<mxfile host="app.diagrams.net" modified="2024-03-30T11:21:57.148Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 OPR/107.0.0.0" etag="dgFr941XeWQBsdL1jASy" version="24.2.1" type="github">
   <diagram name="wireframe admin" id="rL5e0oN_YTX8aWdYo2cD">
-    <mxGraphModel dx="2532" dy="903" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2790" dy="1060" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -512,6 +512,9 @@
         </mxCell>
         <mxCell id="zer_g0Ymn60Sb0Y0c3ZG-160" value="&lt;font color=&quot;#6666ff&quot;&gt;&lt;u&gt;Student Login&lt;/u&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="-410" y="402.5" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="L20_LakYQjULI4hm6kg_-1" value="" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1106.25" y="695" width="120" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
