@@ -53,7 +53,7 @@ class AdminController extends Controller
             $p = '123456';
             $new_admin->password = Hash::make($p);
             $new_admin->save();
-            return redirect()->route('admin_login');
+            return redirect()->route('admin_home');
         }
     }
 
