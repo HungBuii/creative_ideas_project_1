@@ -33,7 +33,7 @@
 
     @include('admin.Website.layout.top_bar')
 
-    @include('admin.website.layout.sidebar')
+    @include('admin.Website.layout.sidebar')
 
     @yield('main_content')
 
