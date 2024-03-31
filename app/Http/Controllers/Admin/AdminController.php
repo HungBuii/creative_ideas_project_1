@@ -191,7 +191,7 @@ class AdminController extends Controller
                     $ext = $request->file('photo')->extension();
                     $photo_name = time() . '.' . $ext;
 
-                    $request->file('photo')->move('uploads/', $photo_name);
+                    $request->file('photo')->move(public_path('uploads/'), $photo_name);
 
                     $student->photo = $photo_name;
                 }
