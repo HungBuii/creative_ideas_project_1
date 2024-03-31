@@ -62,10 +62,10 @@
                                             <a href="{{ route('admin_edit_account_manager', $manager->id) }}"><button
                                                     type="button" class="btn btn-info"><i
                                                         class="feather mr-2 icon-edit"></i>Edit</button></a>
-                                            <button type="button" class="btn btn-danger">
-                                                <a href="{{ route('admin_delete_account_manager_submit', $manager->id) }}"
-                                                    class="feather mr-2 icon-trash">Delete</a>
-                                            </button>
+                                            <a href="{{ route('admin_delete_account_manager_submit', $manager->id) }}">
+                                                <button type="button" class="btn btn-danger"><i
+                                                        class="feather mr-2 icon-trash"></i>Delete</button>
+                                            </a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -75,7 +75,7 @@
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $coordinator->name }}</td>
                                         <td>
-                                            <img src="{{ asset('/uploads/'.$coordinator->photo) }}"
+                                            <img src="{{ asset('/storage/uploads/'.$coordinator->photo) }}"
                                                 style="max-width: 257px; max-height: 257px;" alt="Coordinator-Image">
                                         </td>
                                         <td>{{ $coordinator->email }}</td>
@@ -84,10 +84,11 @@
                                             <a href="{{ route('admin_edit_account_coordinator', $coordinator->id) }}"><button
                                                     type="button" class="btn btn-info"><i
                                                         class="feather mr-2 icon-edit"></i>Edit</button></a>
-                                            <button type="button" class="btn btn-danger">
-                                                <a href="{{ route('admin_delete_account_coordinator_submit', $coordinator->id) }}"
-                                                    class="feather mr-2 icon-trash">Delete</a>
-                                            </button>
+                                            <a
+                                                href="{{ route('admin_delete_account_coordinator_submit', $coordinator->id) }}">
+                                                <button type="button" class="btn btn-danger"><i
+                                                        class="feather mr-2 icon-trash"></i>Delete</button>
+                                            </a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -97,7 +98,7 @@
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $student->name }}</td>
                                         <td>
-                                            <img src="{{ asset('/uploads/'.$student->photo) }}"
+                                            <img src="{{ asset('/storage/uploads/'.$student->photo) }}"
                                                 style="max-width: 257px; max-height: 257px;" alt="Student-Image">
                                         </td>
                                         <td>{{ $student->email }}</td>

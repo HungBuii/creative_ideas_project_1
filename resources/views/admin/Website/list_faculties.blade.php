@@ -48,11 +48,18 @@
                                     @foreach ($faculties as $faculty)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td><a href="{{ route('admin_ideas', $faculty->id) }}">{{ $faculty->name }}</a></td>
+                                        <td><a href="{{ route('admin_ideas', $faculty->id) }}">{{ $faculty->name }}</a>
+                                        </td>
                                         <td>{{ $faculty->description }}</td>
                                         <td>{{ $faculty->date_start }}</td>
                                         <td>{{ $faculty->date_end }}</td>
-                                        <td>{{ $faculty->coordinator->name }}</td>
+                                        <td>
+                                            @isset($faculty->coordinator->name)
+                                            {{ $faculty->coordinator->name }}
+                                            @else
+                                            No Coordinator
+                                            @endisset
+                                        </td>
                                         <td>
                                             <button type="button" class="btn btn-primary" data-toggle="modal"
                                                 data-target="#exampleModalCenter"><i
@@ -63,11 +70,10 @@
                                                     type="button" class="btn btn-info"><i
                                                         class="feather mr-2 icon-edit"></i>Edit</button>
                                             </a>
-
-                                            <button type="button" class="btn btn-danger">
-                                                <a
-                                                    href="{{ route('admin_delete_faculty_submit', $faculty->id) }}">Delete</a>
-                                            </button>
+                                            <a href="{{ route('admin_delete_faculty_submit', $faculty->id) }}">
+                                                <button type="button" class="btn btn-danger"><i
+                                                        class="feather mr-2 icon-trash"></i>Delete</button>
+                                            </a>
                                         </td>
                                     </tr>
 
@@ -87,7 +93,15 @@
                                                         $faculty->description }}</p>
                                                     <br>
                                                     <p class="mb-0" style="word-wrap: break-word;">Coordinator
-                                                        assigned : <b>{{ $faculty->coordinator->name }}</b></p>
+                                                        assigned :
+                                                        <b>
+                                                            @isset($faculty->coordinator->name)
+                                                            {{ $faculty->coordinator->name }}
+                                                            @else
+                                                            No Coordinator
+                                                            @endisset
+                                                        </b>
+                                                    </p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn  btn-secondary"

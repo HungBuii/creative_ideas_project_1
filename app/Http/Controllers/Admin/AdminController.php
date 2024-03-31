@@ -164,7 +164,7 @@ class AdminController extends Controller
                     $ext = $request->file('photo')->extension();
                     $photo_name = time() . '.' . $ext;
 
-                    $request->file('photo')->move(public_path('uploads/'), $photo_name);
+                    $request->file('photo')->move(public_path('storage/uploads/'), $photo_name);
 
                     $coordinator->photo = $photo_name;
                 }
@@ -191,7 +191,7 @@ class AdminController extends Controller
                     $ext = $request->file('photo')->extension();
                     $photo_name = time() . '.' . $ext;
 
-                    $request->file('photo')->move(public_path('uploads/'), $photo_name);
+                    $request->file('photo')->move(public_path('/storage/uploads/'), $photo_name);
 
                     $student->photo = $photo_name;
                 }
@@ -224,14 +224,14 @@ class AdminController extends Controller
                 'photo' => 'image|mimes:jpg,jpeg,png,gif',
             ]);
 
-            if (file_exists(public_path('uploads/' . $current_single_manager->photo)) and (!empty($current_single_manager->photo))) {
-                unlink(public_path('uploads/' . $current_single_manager->photo));
+            if (file_exists(public_path('/storage/uploads/' . $current_single_manager->photo)) and (!empty($current_single_manager->photo))) {
+                unlink(public_path('/storage/uploads/' . $current_single_manager->photo));
             }
 
             $ext = $request->file('photo')->extension();
             $photo_name = time() . '.' . $ext;
 
-            $request->file('photo')->move(public_path('uploads/'), $photo_name);
+            $request->file('photo')->move(public_path('/storage/uploads/'), $photo_name);
             $current_single_manager->photo = $photo_name;
         }
 
@@ -276,14 +276,14 @@ class AdminController extends Controller
                 'photo' => 'image|mimes:jpg,jpeg,png,gif',
             ]);
 
-            if (file_exists(public_path('uploads/' . $current_single_coordinator->photo)) and (!empty($current_single_coordinator->photo))) {
-                unlink(public_path('uploads/' . $current_single_coordinator->photo));
+            if (file_exists(public_path('/storage/uploads/' . $current_single_coordinator->photo)) and (!empty($current_single_coordinator->photo))) {
+                unlink(public_path('/storage/uploads/' . $current_single_coordinator->photo));
             }
 
             $ext = $request->file('photo')->extension();
             $photo_name = time() . '.' . $ext;
 
-            $request->file('photo')->move(public_path('uploads/'), $photo_name);
+            $request->file('photo')->move(public_path('/storage/uploads/'), $photo_name);
             $current_single_coordinator->photo = $photo_name;
         }
 
@@ -301,7 +301,7 @@ class AdminController extends Controller
     public function delete_account_coordinator_submit($id)
     {
         $single_coordinator = MarketingCoordinator::where('id', $id)->first();
-        unlink(public_path('uploads/' . $single_coordinator->photo));
+        unlink(public_path('/storage/uploads/' . $single_coordinator->photo));
         $single_coordinator->delete();
 
         return redirect()->route('admin_list_accounts')->with('success', 'Deleted an Marketing Coordinator account successfully!');
@@ -327,14 +327,14 @@ class AdminController extends Controller
                 'photo' => 'image|mimes:jpg,jpeg,png,gif',
             ]);
 
-            if (file_exists(public_path('uploads/' . $current_single_student->photo)) and (!empty($current_single_student->photo))) {
-                unlink(public_path('uploads/' . $current_single_student->photo));
+            if (file_exists(public_path('/storage/uploads/' . $current_single_student->photo)) and (!empty($current_single_student->photo))) {
+                unlink(public_path('/storage/uploads/' . $current_single_student->photo));
             }
 
             $ext = $request->file('photo')->extension();
             $photo_name = time() . '.' . $ext;
 
-            $request->file('photo')->move(public_path('uploads/'), $photo_name);
+            $request->file('photo')->move(public_path('/storage/uploads/'), $photo_name);
             $current_single_student->photo = $photo_name;
         }
 
@@ -352,7 +352,7 @@ class AdminController extends Controller
     public function delete_account_student_submit($id)
     {
         $single_student = Student::where('id', $id)->first();
-        unlink(public_path('uploads/' . $single_student->photo));
+        unlink(public_path('/storage/uploads/' . $single_student->photo));
         $single_student->delete();
 
         return redirect()->route('admin_list_accounts')->with('success', 'Deleted an Student account successfully!');
@@ -379,6 +379,8 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'date_start' => 'required',
+            'date_end' => 'required',
         ]);
 
         $exist_faculty = Faculty::where('name', $request->name)->first();
