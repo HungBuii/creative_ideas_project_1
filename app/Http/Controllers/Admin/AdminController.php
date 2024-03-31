@@ -137,7 +137,7 @@ class AdminController extends Controller
                     $ext = $request->file('photo')->extension();
                     $photo_name = time() . '.' . $ext;
 
-                    $request->file('photo')->move(public_path('uploads/'), $photo_name);
+                    $request->file('photo')->move(public_path('/storage/uploads/'), $photo_name);
 
                     $manager->photo = $photo_name;
                 }
@@ -249,7 +249,7 @@ class AdminController extends Controller
     public function delete_account_manager_submit($id)
     {
         $single_manager = MarketingManager::where('id', $id)->first();
-        unlink(public_path('uploads/' . $single_manager->photo));
+        unlink(public_path('/storage/uploads/' . $single_manager->photo));
         $single_manager->delete();
 
         return redirect()->route('admin_list_accounts')->with('success', 'Deleted an Marketing Manager account successfully!');

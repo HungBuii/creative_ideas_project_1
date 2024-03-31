@@ -53,7 +53,7 @@
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $manager->name }}</td>
                                         <td>
-                                            <img src="{{ asset('/uploads/'.$manager->photo) }}"
+                                            <img src="{{ asset('/storage/uploads/'.$manager->photo) }}"
                                                 style="max-width: 257px; max-height: 257px;" alt="Manager-Image">
                                         </td>
                                         <td>{{ $manager->email }}</td>
