@@ -249,7 +249,9 @@ class AdminController extends Controller
     public function delete_account_manager_submit($id)
     {
         $single_manager = MarketingManager::where('id', $id)->first();
-        unlink(public_path('/storage/uploads/' . $single_manager->photo));
+        if (file_exists(public_path('/storage/uploads/' . $single_manager->photo)) and (!empty($single_manager->photo))) {
+            unlink(public_path('/storage/uploads/' . $single_manager->photo));
+        }
         $single_manager->delete();
 
         return redirect()->route('admin_list_accounts')->with('success', 'Deleted an Marketing Manager account successfully!');
@@ -301,7 +303,9 @@ class AdminController extends Controller
     public function delete_account_coordinator_submit($id)
     {
         $single_coordinator = MarketingCoordinator::where('id', $id)->first();
-        unlink(public_path('/storage/uploads/' . $single_coordinator->photo));
+        if (file_exists(public_path('/storage/uploads/' . $single_coordinator->photo)) and (!empty($single_coordinator->photo))) {
+            unlink(public_path('/storage/uploads/' . $single_coordinator->photo));
+        }
         $single_coordinator->delete();
 
         return redirect()->route('admin_list_accounts')->with('success', 'Deleted an Marketing Coordinator account successfully!');
@@ -348,11 +352,13 @@ class AdminController extends Controller
 
     }
 
-    // Delete a Marketing Coordinator account
+    // Delete a Student account
     public function delete_account_student_submit($id)
     {
         $single_student = Student::where('id', $id)->first();
-        unlink(public_path('/storage/uploads/' . $single_student->photo));
+        if (file_exists(public_path('/storage/uploads/' . $single_student->photo)) and (!empty($single_student->photo))) {
+            unlink(public_path('/storage/uploads/' . $single_student->photo));
+        }
         $single_student->delete();
 
         return redirect()->route('admin_list_accounts')->with('success', 'Deleted an Student account successfully!');
@@ -425,18 +431,13 @@ class AdminController extends Controller
 
         $select_coordinator = $request->input('coordinator');
         $coordinator = MarketingCoordinator::where('name', $select_coordinator)->first();
-        if ($single_faculty->coordinator_id == $coordinator->id)
-        {
+        if ($single_faculty->coordinator_id == $coordinator->id) {
             $single_faculty->coordinator_id = $coordinator->id;
-        }
-        else
-        {
+        } else {
             $check_current_coordinator = Faculty::where('coordinator_id', $coordinator->id)->first();
             if ($check_current_coordinator) {
                 return redirect()->route('admin_edit_faculty', $single_faculty->id)->with('error', 'This teacher was in charge of another faculty!');
-            }
-            else
-            {
+            } else {
                 $single_faculty->coordinator_id = $coordinator->id;
             }
         }
