@@ -54,3 +54,7 @@ Route::get('/hehe', function () {
 Route::get('/fac', function () {
     return view('admin.Website.faculity');
 });
+
+Route::get('/stu', function () {
+    return view('admin.Website.student_faculity_list');
+});
