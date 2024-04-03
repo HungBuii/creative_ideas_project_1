@@ -114,7 +114,7 @@ class AdminController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email:rfc,dns',
-            'password' => 'required',
+            'password' => 'required|min:6',
         ]);
 
         $select_role = $request->input('role');

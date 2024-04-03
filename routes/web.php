@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Student\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,3 +69,15 @@ Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin_p
 
 
 /* Marketing Manager */
+
+
+/* Student */
+Route::get('/student/login', [StudentController::class, 'login_view'])->name('student_login'); // login
+Route::post('/student/login-submit', [StudentController::class, 'login_submit'])->name('student_login_submit'); // login submit
+
+
+Route::get('/student/home', [StudentController::class, 'home'])->name('student_home')->middleware('student:student'); // Homepage view
+
+Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name('student_dashboard')->middleware('student:student'); // Dashboard view
+
+Route::get('/student/list-faculties', [StudentController::class, 'list_faculties'])->name('student_faculties')->middleware('student:student'); // List faculties view
