@@ -12,7 +12,7 @@
                     <a href="{{ route('student_home') }}">
                     <div style="font-size: 25px">
                     <span><i class="feather icon-home" style="padding-right: 5px;"></span></i> 
-                    Admin Page </div>
+                    Student Page </div>
                     </a>
                 </div>
             
