@@ -60,29 +60,45 @@
                             </form>
                         </div>
                         <div class="col-md-6">
-                            <form>
-                                <!-- Comment !-->
-                                <p><a class="btn mb-1 btn-primary" data-toggle="collapse" href="#multiCollapseExample1">
-                                        <i class="feather mr-2 icon-message-square"></i>Submit an idea</a>
-                                <div class="collapse multi-collapse mt-2" id="multiCollapseExample1">
+                            <form action="{{ route('student_submit_idea', $single_faculty->id) }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+
+                                <input type="hidden" name="student_id" value="{{ Auth::guard('student')->user()->id }}">
+
+                                {{-- <p><a class="btn mb-1 btn-primary" data-toggle="collapse" href="#multiCollapseExample1">
+                                        <i class="feather mr-2 icon-message-square"></i>Submit an idea</a> --}}
+                                {{-- <div class="collapse multi-collapse mt-2" id="multiCollapseExample1"> --}}
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label>Topic</label>
-                                                <input type="text" class="form-control" placeholder="Enter Topic">
+                                                <input type="text" class="form-control" placeholder="Enter Topic"
+                                                    name="topic">
+                                                @error('topic')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
 
                                                 <br>
 
-                                                <label>Tag</label>
-                                                <input type="text" class="form-control" placeholder="Enter Tag#">
+                                                <label>Tag#</label>
+                                                <input type="text" class="form-control" placeholder="Enter Tag#"
+                                                    name="tag">
+                                                @error('tag')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
 
                                                 <br>
 
                                                 <label>Upload Files</label>
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                                        name="file">
                                                     <label class="custom-file-label" for="inputGroupFile01">Choose file
                                                         ( .docx, JPG and PNG only)</label>
+                                                    @error('file')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="custom-control custom-checkbox">
@@ -186,7 +202,7 @@
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                         </div>
                                     </div>
-                                </div>
+                                {{-- </div> --}}
                             </form>
                         </div>
                     </div>

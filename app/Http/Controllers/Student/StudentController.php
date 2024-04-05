@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Student;
 
 use App\Models\Faculty;
+use App\Models\Idea;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -68,5 +69,33 @@ class StudentController extends Controller
     {
         $single_faculty = Faculty::where('id', $id)->first();
         return view('student.Website.submit_idea', compact('single_faculty'));
+    }
+
+    // Submit idea 
+    public function submit_idea(Request $request, $id)
+    {
+        $request->validate([
+            'topic' => 'required',
+            'tag' => 'required',
+            'file' => 'required|mimes:docx',
+        ]);
+
+        $single_faculty = Faculty::where('id', $id)->first();
+        $student = Student::where('id', $request->student_id)->first();
+
+        $file = $request->file;
+        $filename = $student->name. '.' .$file->getClientOriginalExtension();
+        $request->file->move(public_path('/storage/files/'), $filename);
+
+        $new_idea = new Idea();
+        $new_idea->topic = $request->topic;
+        $new_idea->tag = $request->tag;
+        $new_idea->file = $filename;
+        $new_idea->faculty_id = $single_faculty->id;
+        $new_idea->student_id = $student->id;
+
+        $new_idea->save();
+
+        return redirect()->route('student_current_faculty', $single_faculty->id)->with('success', 'Add new successful ideas!');
     }
 }
