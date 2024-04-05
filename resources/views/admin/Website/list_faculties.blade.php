@@ -57,6 +57,10 @@
                                             @isset($faculty->coordinator->name)
                                             {{ $faculty->coordinator->name }}
                                             @else
+                                            @php
+                                                $faculty->coordinator_id = 0;
+                                                $faculty->update();
+                                            @endphp
                                             No Coordinator
                                             @endisset
                                         </td>

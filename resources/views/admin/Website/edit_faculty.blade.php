@@ -96,6 +96,7 @@
                                     @endif
                                 </p>
                                 <select class="custom-select" id="inputGroupSelect01" name="student">
+                                    <option selected>...</option>
                                     @foreach ($students as $student)
                                     <option selected>{{ $student->name }}</option>
                                     @endforeach
