@@ -74,12 +74,37 @@
                                 @endisset
                             </p>
                             <div class="input-group mb-3">
-                                <select class="custom-select" id="inputGroupSelect01" name="coordinator">
+                                <select class="custom-select" id="inputGroupSelect01">
                                     @foreach ($coordinators as $coordinator)
                                     <option selected>{{ $coordinator->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
+                            <!-- Select Students -->
+                            <div class="form-group">
+                                <label for="">Choose Students</label>
+                                <div class="select-btn">
+                                    <span class="btn-text">Select Students</span>
+                                    <span class="arrow-dwn">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </span>
+                                </div>
+                    
+                                <ul class="list-items">
+                                    <li class="item">
+                                        <span class="checkbox">
+                                            <i class="fa-solid fa-check check-icon"></i>
+                                        </span>
+                                        <span class="item-text">Student 1</span>
+                                    </li>
+                                    <li class="item">
+                                        <span class="checkbox">
+                                            <i class="fa-solid fa-check check-icon"></i>
+                                        </span>
+                                        <span class="item-text">Student 2</span>
+                                    </li>
+                                </ul>
+                        </div>
                         </div>
                         </form>
                     </div>
