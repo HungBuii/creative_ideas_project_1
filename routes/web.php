@@ -55,6 +55,9 @@ Route::get('/fac', function () {
     return view('admin.Website.faculity');
 });
 
-Route::get('/stu', function () {
-    return view('admin.Website.student_faculity_list');
+Route::get('/submit', function () {
+    return view('admin.Website.submit_post');
+});
+Route::get('/add', function () {
+    return view('admin.Website.add_events');
 });

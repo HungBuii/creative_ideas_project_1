@@ -122,6 +122,26 @@
                                                 </div>
                                             </p>
                             </form>
+                            <div class="accordion" id="accordionExample">
+                                <div class="card mb-0">
+                                    <div class="card-header" id="headingOne">
+                                        <h5 class="mb-0"><a href="#!" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Comment</a></h5>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <img alt="No image" src="https://wallpapers-clan.com/wp-content/uploads/2023/02/anime-boy-black-pfp-28.jpg" class="img-radius" style="max-width: 50px; max-height: 50px">
+                                        <span>Coordinator A</span> 
+                                        <p>
+                                            <i class="feather mr-2 icon-calendar""></i>
+                                            Commented on <b>March-26-2024 - 04-38-00 p.m</b>
+                                        </p>
+                                        <p>
+                                            Encouraging employee participation in quality improvement intiatives through incentives and recognition
+                                        </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
