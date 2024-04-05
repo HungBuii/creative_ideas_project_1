@@ -455,39 +455,37 @@ class AdminController extends Controller
         $single_faculty->date_end = $request->date_end;
 
         $select_coordinator = $request->input('coordinator');
-        if ($select_coordinator == '...')
-        {
+        if ($select_coordinator == '...') {
+            $single_faculty->coordinator_id = 0;
             $single_faculty->update();
-        }
-        $coordinator = MarketingCoordinator::where('name', $select_coordinator)->first();
-        if ($single_faculty->coordinator_id == 0) {
-            $single_faculty->coordinator_id == 0;
-        } else if ($single_faculty->coordinator_id == $coordinator->id) {
-            $single_faculty->coordinator_id = $coordinator->id;
         } else {
-            $check_current_coordinator = Faculty::where('coordinator_id', $coordinator->id)->first();
-            if ($check_current_coordinator) {
-                return redirect()->route('admin_edit_faculty', $single_faculty->id)->with('error', 'This teacher was in charge of another faculty!');
-            } else {
+            $coordinator = MarketingCoordinator::where('name', $select_coordinator)->first();
+            if ($single_faculty->coordinator_id == $coordinator->id) {
                 $single_faculty->coordinator_id = $coordinator->id;
+            } else {
+                $check_current_coordinator = Faculty::where('coordinator_id', $coordinator->id)->first();
+                if ($check_current_coordinator) {
+                    return redirect()->route('admin_edit_faculty', $single_faculty->id)->with('error', 'This teacher was in charge of another faculty!');
+                } else {
+                    $single_faculty->coordinator_id = $coordinator->id;
+                }
+            }
+
+            $select_student = $request->input('student');
+            if ($select_student == '...') {
+                $single_faculty->update();
+            } else {
+                $student = Student::where('name', $select_student)->first();
+                if ($student->faculty_id != 0) {
+                    $student->update();
+                    return redirect()->route('admin_edit_faculty', $single_faculty->id)->with('error', 'This student has already taken this faculty!');
+                } else {
+                    $student->faculty_id = $single_faculty->id;
+                    $student->update();
+                }
             }
         }
 
-        $select_student = $request->input('student');
-        if ($select_student == '...') {
-            $single_faculty->update();
-        } 
-        else 
-        {
-            $student = Student::where('name', $select_student)->first();
-            if ($student->faculty_id != 0) {
-                $student->update();
-                return redirect()->route('admin_edit_faculty', $single_faculty->id)->with('error', 'This student has already taken this faculty!');
-            } else {
-                $student->faculty_id = $single_faculty->id;
-                $student->update();
-            }
-        }
 
         $single_faculty->update();
 
