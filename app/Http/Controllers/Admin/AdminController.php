@@ -455,6 +455,10 @@ class AdminController extends Controller
         $single_faculty->date_end = $request->date_end;
 
         $select_coordinator = $request->input('coordinator');
+        if ($select_coordinator == '...')
+        {
+            $single_faculty->update();
+        }
         $coordinator = MarketingCoordinator::where('name', $select_coordinator)->first();
         if ($single_faculty->coordinator_id == 0) {
             $single_faculty->coordinator_id == 0;
@@ -472,7 +476,9 @@ class AdminController extends Controller
         $select_student = $request->input('student');
         if ($select_student == '...') {
             $single_faculty->update();
-        } else {
+        } 
+        else 
+        {
             $student = Student::where('name', $select_student)->first();
             if ($student->faculty_id != 0) {
                 $student->update();
@@ -481,12 +487,9 @@ class AdminController extends Controller
                 $student->faculty_id = $single_faculty->id;
                 $student->update();
             }
-            $single_faculty->update();
         }
 
-
-
-
+        $single_faculty->update();
 
         return redirect()->route('admin_edit_faculty', $single_faculty->id)->with('success', 'Updated a faculty successfully!');
     }

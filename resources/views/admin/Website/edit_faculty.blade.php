@@ -75,6 +75,7 @@
                             </p>
                             <div class="input-group mb-3">
                                 <select class="custom-select" id="inputGroupSelect01" name="coordinator">
+                                    <option selected>...</option>
                                     @foreach ($coordinators as $coordinator)
                                     <option selected>{{ $coordinator->name }}</option>
                                     @endforeach
