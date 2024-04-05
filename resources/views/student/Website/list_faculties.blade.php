@@ -37,38 +37,29 @@
                                         <th>Time Start</th>
                                         <th>Time End</th>
                                         <th>Coordinator</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($faculties as $item)
-                                    <form
-                                        action="{{ route('student_join_faculty_submit', [Auth::guard('student')->user()->id, $item->id]) }}"
-                                        method="POST">
-                                        @csrf
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->date_start }}</td>
-                                            <td>{{ $item->date_end }}</td>
-                                            <td>
-                                                @isset($item->coordinator->name)
-                                                {{ $item->coordinator->name }}
-                                                @else
-                                                No Coordinator
-                                                @endisset
-                                            </td>
-                                            {{-- <td id="actionCell1">
-                                                <button type="button" class="btn btn-success"
-                                                    onclick="joinFaculty(this)">
-                                                    <i class="feather mr-2 icon-plus-circle"></i>Join
-                                                </button>
-                                            </td> --}}
-                                            <td>
-                                                <button>Join</button>
-                                            </td>
-                                        </tr>
-                                    </form>
+
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>
+                                            <a href="{{ route('student_current_faculty', $item->id) }}">
+                                                {{ $item->name }}
+                                            </a>
+                                        </td>
+                                        <td>{{ $item->date_start }}</td>
+                                        <td>{{ $item->date_end }}</td>
+                                        <td>
+                                            @isset($item->coordinator->name)
+                                            {{ $item->coordinator->name }}
+                                            @else
+                                            No Coordinator
+                                            @endisset
+                                        </td>
+                                    </tr>
+
                                     @endforeach
                                 </tbody>
                             </table>

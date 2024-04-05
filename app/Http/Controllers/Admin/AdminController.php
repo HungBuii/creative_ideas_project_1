@@ -217,6 +217,7 @@ class AdminController extends Controller
 
         $request->validate([
             'email' => 'email:rfc,dns',
+            'password' => 'min:6',
         ]);
 
         if ($request->hasFile('photo')) {
@@ -275,6 +276,7 @@ class AdminController extends Controller
 
         $request->validate([
             'email' => 'email:rfc,dns',
+            'password' => 'min:6',
         ]);
 
         if ($request->hasFile('photo')) {
@@ -333,6 +335,7 @@ class AdminController extends Controller
 
         $request->validate([
             'email' => 'email:rfc,dns',
+            'password' => 'min:6',
         ]);
 
         if ($request->hasFile('photo')) {
@@ -458,7 +461,9 @@ class AdminController extends Controller
         if ($select_coordinator == '...') {
             $single_faculty->coordinator_id = 0;
             $single_faculty->update();
-        } else {
+        } 
+        else 
+        {
             $coordinator = MarketingCoordinator::where('name', $select_coordinator)->first();
             if ($single_faculty->coordinator_id == $coordinator->id) {
                 $single_faculty->coordinator_id = $coordinator->id;
@@ -470,20 +475,34 @@ class AdminController extends Controller
                     $single_faculty->coordinator_id = $coordinator->id;
                 }
             }
+        }
 
-            $select_student = $request->input('student');
-            if ($select_student == '...') {
-                $single_faculty->update();
+        $select_student = $request->input('student');
+        if ($select_student == '...') {
+            $single_faculty->update();
+        } else {
+            $student = Student::where('name', $select_student)->first();
+
+            if ($student->faculty_id != 0) {
+                $student->update();
+                return redirect()->route('admin_edit_faculty', $single_faculty->id)->with('error', 'This student has already taken this faculty!');
             } else {
-                $student = Student::where('name', $select_student)->first();
-                if ($student->faculty_id != 0) {
-                    $student->update();
-                    return redirect()->route('admin_edit_faculty', $single_faculty->id)->with('error', 'This student has already taken this faculty!');
-                } else {
-                    $student->faculty_id = $single_faculty->id;
-                    $student->update();
-                }
+                $student->faculty_id = $single_faculty->id;
+                $student->update();
             }
+
+
+        }
+
+        $delete_student = $request->input('delete_student');
+        if ($delete_student == '...') {
+            $single_faculty->update();
+        }
+        else
+        {
+            $student = Student::where('name', $delete_student)->first();
+            $student->faculty_id = 0;
+            $student->update();
         }
 
 

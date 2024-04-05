@@ -59,31 +59,8 @@ class StudentController extends Controller
     // List faculties
     public function list_faculties()
     {
-        $faculties = Faculty::get();
+        $faculties = Faculty::where('id', Auth::guard('student')->user()->faculty_id)->get();
         return view('student.Website.list_faculties', compact('faculties'));
-    }
-
-    // Selected faculties
-    public function select_faculties()
-    {
-        $faculties = Faculty::get();
-        return view('student.Website.select_faculties', compact('faculties'));
-    }
-
-    // Join faculty submit
-    public function join_faculty_submit($student_id, $faculty_id)
-    {
-        $rstudent_id = Student::where('id', $student_id)->first();
-        $rfaculty_id = Faculty::where('id', $faculty_id)->first();
-
-        // dd($rstudent_id->faculties()->as('faculty_id'));
-        if ($rstudent_id->faculties()->faculty_id == $rfaculty_id)
-        {
-            return redirect()->back()->with('error', 'You are already in that faculty!');
-        }
-
-        $rstudent_id->faculties()->attach($rfaculty_id);
-        return redirect()->back()->with('success', 'You have been successfully added to this faculty!');;
     }
 
     // Current faculty view

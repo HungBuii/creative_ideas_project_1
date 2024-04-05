@@ -26,8 +26,7 @@
                 <li class="nav-item pcoded-hasmenu">
                     <a href="#" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Event</span></a>
                     <ul class="pcoded-submenu">
-                        <li><a href="{{ route('student_faculties') }}" target="">List of faculties</a></li>
-                        <li><a href="{{ route('student_select_faculties') }}" target="">Selected faculties</a></li>
+                        <li><a href="{{ route('student_faculties') }}" target="">Faculties</a></li>
                     </ul>
                 </li>
             </ul>

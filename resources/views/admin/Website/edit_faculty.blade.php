@@ -103,6 +103,20 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <label>Delete student in faculty</label>
+                            <select class="custom-select" id="inputGroupSelect01" name="delete_student">
+                                <option selected>...</option>
+                                @if($single_faculty->students->count() > 0)
+
+                                @foreach ($single_faculty->students as $student)
+                                <option selected>{{ $student->name }}</option>
+                                @endforeach
+
+                                @endif
+                                {{-- @foreach ($students as $student)
+                                <option selected>{{ $student->name }}</option>
+                                @endforeach --}}
+                            </select>
                         </div>
                         </form>
                     </div>

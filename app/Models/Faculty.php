@@ -7,14 +7,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Faculty extends Model
 {
     use HasFactory;
 
+    // Faculty vs Coordinator: 1 F has 1 C
     public function coordinator(): BelongsTo
     {
-        return $this->belongsTo(MarketingCoordinator::class, 'coordinator_id');
+        return $this->belongsTo(MarketingCoordinator::class, 'coordinator_id', 'id'); // MarketingCoordinator::class, foreign_key(faculty), owner_key(marketingCoordinator)
     }
 
     // Faculty vs Student: 1 faculty has many students

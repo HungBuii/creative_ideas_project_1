@@ -84,8 +84,4 @@ Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name(
 
 Route::get('/student/list-faculties', [StudentController::class, 'list_faculties'])->name('student_faculties')->middleware('student:student'); // List faculties view
 
-Route::get('/student/select-faculties', [StudentController::class, 'select_faculties'])->name('student_select_faculties')->middleware('student:student'); // List selected faculties view
-
-Route::post('/student/{student:id}/join-faculty/{faculty:id}', [StudentController::class, 'join_faculty_submit'])->name('student_join_faculty_submit')->middleware('student:student'); // Join faculties submit
-
 Route::get('/student/faculty/{id}', [StudentController::class, 'current_faculty'])->name('student_current_faculty')->middleware('student:student'); // Current faculty view

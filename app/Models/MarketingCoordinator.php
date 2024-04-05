@@ -13,6 +13,7 @@ class MarketingCoordinator extends Model
     // Coordinator vs Faculty: 1 coordinator has 1 faculty
     public function faculty(): HasOne
     {
-        return $this->hasOne(Faculty::class, 'coordinator_id');
+        return $this->hasOne(Faculty::class, 'coordinator_id', 'id'); // Faculty::class, foreign_key(Faculty), owner_key(marketingCoordinator)
+        // , 'coordinator_id', 'id'
     }
 }
