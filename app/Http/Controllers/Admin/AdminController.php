@@ -217,7 +217,7 @@ class AdminController extends Controller
 
         $request->validate([
             'email' => 'email:rfc,dns',
-            'password' => 'min:6',
+            'password' => 'nullable|min:6',
         ]);
 
         if ($request->hasFile('photo')) {
@@ -276,7 +276,7 @@ class AdminController extends Controller
 
         $request->validate([
             'email' => 'email:rfc,dns',
-            'password' => 'min:6',
+            'password' => 'nullable|min:6',
         ]);
 
         if ($request->hasFile('photo')) {
@@ -335,7 +335,7 @@ class AdminController extends Controller
 
         $request->validate([
             'email' => 'email:rfc,dns',
-            'password' => 'min:6',
+            'password' => 'nullable|min:6',
         ]);
 
         if ($request->hasFile('photo')) {
