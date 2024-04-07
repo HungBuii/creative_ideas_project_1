@@ -98,4 +98,42 @@ class StudentController extends Controller
 
         return redirect()->route('student_current_faculty', $single_faculty->id)->with('success', 'Add new successful ideas!');
     }
+
+    // Download file
+    public function download_file($file)
+    {
+        return response()->download(public_path('/storage/files/' .Auth::guard('student')->user()->idea->file));
+    }
+
+    // View edit submit idea
+    public function edit_submit_idea_view($id)
+    {
+        $single_faculty = Faculty::where('id', $id)->first();
+        return view('student.Website.edit_submit_idea', compact('single_faculty'));
+    }
+
+    // Submit edit idea
+    public function edit_submit_idea(Request $request, $id)
+    {
+        $request->validate([
+            'file' => 'required|mimes:docx',
+        ]);   
+
+        $student = Student::where('id', $request->student_id)->first();
+        if (file_exists(public_path('/storage/files/' .Auth::guard('student')->user()->idea->file)) and (!empty(Auth::guard('student')->user()->idea->file))) {
+            unlink(public_path('/storage/files/' .Auth::guard('student')->user()->idea->file));
+        }
+
+        $file = $request->file;
+        $filename = $student->name. '.' .$file->getClientOriginalExtension();
+        $request->file->move(public_path('/storage/files/'), $filename);
+
+        $single_idea = Idea::where('id', $id)->first();
+        $single_idea->topic = $request->topic;
+        $single_idea->tag = $request->tag;
+        $single_idea->file = $filename;
+        $single_idea->update();
+
+        return redirect()->route('student_edit_submit_idea_view', $single_idea->faculty_id)->with('success', 'Edit idea successfully!');
+    }
 }

@@ -45,8 +45,16 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
+                                            @isset (Auth::guard('student')->user()->idea)
+                                            {{-- $item->ideas --}}
+                                            <a href="{{ route('student_edit_submit_idea_view', $item->id) }}">        
+                                            @else
                                             <a href="{{ route('student_current_faculty', $item->id) }}">
+                                            @endisset
+                                            
                                                 {{ $item->name }}
+                                                {{-- {{ route('student_current_faculty', $item->id) }} --}}
+                                                {{-- {{ route('student_edit_submit_idea', $item->id) }} --}}
                                             </a>
                                         </td>
                                         <td>{{ $item->date_start }}</td>

@@ -24,4 +24,10 @@ class Faculty extends Model
     {
         return $this->hasMany(Student::class, 'faculty_id');
     }
+
+    // Faculty vs Idea: 1 faculty has many ideas (Student)
+    public function idea(): HasOne
+    {
+        return $this->hasOne(Idea::class, 'faculty_id');
+    }
 }

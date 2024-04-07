@@ -87,3 +87,9 @@ Route::get('/student/list-faculties', [StudentController::class, 'list_faculties
 Route::get('/student/faculty/{id}', [StudentController::class, 'current_faculty'])->name('student_current_faculty')->middleware('student:student'); // Current faculty view
 
 Route::post('/student/faculty/{id}/submit-idea', [StudentController::class, 'submit_idea'])->name('student_submit_idea')->middleware('student:student'); // Submit idea
+
+Route::get('/student/faculty/{id}/edit', [StudentController::class, 'edit_submit_idea_view'])->name('student_edit_submit_idea_view')->middleware('student:student'); // View Edit Submit idea
+
+Route::get('/student/download/{file}', [StudentController::class, 'download_file'])->name('student_download_file')->middleware('student:student'); // Download file
+
+Route::post('/student/idea/{id}/edit-submit', [StudentController::class, 'edit_submit_idea'])->name('student_edit_submit_idea'); // edit submit idea
