@@ -52,7 +52,6 @@
                         </div>
                         <div class="col-md-6">
                             <form>    
-                                        <!-- Comment !-->
                                         <p><a class="btn mb-1 btn-primary" data-toggle="collapse" href="#multiCollapseExample1"> <i class="feather mr-2 icon-message-square"></i>Submit a post</a>
                                                 <div class="collapse multi-collapse mt-2" id="multiCollapseExample1">
                                                     <div class="card">
@@ -122,6 +121,68 @@
                                                 </div>
                                             </p>
                             </form>
+                            <!-- Table -->
+                            <div class="card-body table-border-style">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td class="table-active">Submission status</td>
+                                                <th class="table-success">Submitted for grading</th>
+                                            </tr>
+                                            <tr>
+                                                <td class="table-active">Grading Status</td>
+                                                <th class="table-success">Graded</th>
+                                            </tr>
+                                            <tr>
+                                                <td class="table-active">Time Remaining</td>
+                                                <th class="table-danger">Assignment was submitted 1 day 4 hours late</th>
+                                            </tr>
+                                            <tr>
+                                                <td class="table-active">File submissions</td>
+                                                <th><a href="http://www.smartgoalspdf.com/smart-goals.pdf"><i class="feather mr-2 icon-file"></i>Smart Goals PDF</a>
+                                                    <br>
+                                                    <img src="https://media.istockphoto.com/id/1410046653/vector/cute-school-kids-around-chalkboard-happy-children-with-empty-blackboard-banner-with-adorable.jpg?s=1024x1024&w=is&k=20&c=Tt-ykpYpAv-JrCfyeNIrV0cpR7ife87gdhF838M9wRY=" style="max-width: 257px; max-height: 257px; margin-left: 220px" class="profile-picture" alt="User-Image"></th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- End of Table -->
+
+                              <!-- Edit -->
+                              <button type="button" class="btn btn-warning" data-toggle="modal" data-target=".bd-example-modal-lg" style="margin-left: 50%"><i class="feather mr-2 icon-edit"></i>Edit Post</button>
+                              <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title h4" id="myLargeModalLabel">Edit Post</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <label>Title</label>
+                                                        <input type="text" class="form-control" placeholder="Enter Title">
+                                                        <label>Upload Files</label>
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                                            <label class="custom-file-label" for="inputGroupFile01">Choose file ( .docx, JPG and PNG only)</label>
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- End of Edit -->
+                            <br><br>
+
+                            <!-- Comment -->
                             <div class="accordion" id="accordionExample">
                                 <div class="card mb-0">
                                     <div class="card-header" id="headingOne">
@@ -142,6 +203,8 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- End of Comment -->
+
                         </div>
                     </div>
                 </div>
