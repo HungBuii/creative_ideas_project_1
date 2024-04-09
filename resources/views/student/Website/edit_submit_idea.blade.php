@@ -68,10 +68,6 @@
                                             <th class="table-success">Submitted for grading</th>
                                         </tr>
                                         <tr>
-                                            <td class="table-active">Grading Status</td>
-                                            <th class="table-success">Graded</th>
-                                        </tr>
-                                        <tr>
                                             <td class="table-active">Time Remaining</td>
                                             <th class="table-danger">Assignment was submitted 1 day 4 hours late</th>
                                         </tr>
