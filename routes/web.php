@@ -86,7 +86,7 @@ Route::get('/coordinator/list-faculties', [CoordinatorController::class, 'list_f
 
 Route::get('/coordinator/faculty/{id}/list-ideas', [CoordinatorController::class, 'list_ideas'])->name('coordinator_list_ideas')->middleware('coordinator:coordinator'); // List ideas view
 
-Route::get('/coordinator/download/{file}', [CoordinatorController::class, 'download_file'])->name('coordinator_download_file'); // Download file
+Route::get('/coordinator/download/{file}', [CoordinatorController::class, 'download_file'])->name('coordinator_download_file')->middleware('coordinator:coordinator'); // Download file
 
 
 /* Student */

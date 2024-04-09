@@ -99,6 +99,7 @@ class CoordinatorController extends Controller
             }
     
             return response()->download($fileName);
+            // return Storage::download($fileName);
         }
         catch (\Exception $e)
         {
