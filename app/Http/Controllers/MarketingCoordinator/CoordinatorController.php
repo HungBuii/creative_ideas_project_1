@@ -89,7 +89,7 @@ class CoordinatorController extends Controller
             $single_file = public_path('/storage/files/' . $file);
             $nameInZipFile = basename($single_file);
             $zip->addFile($single_file, $nameInZipFile);
-            $zip->close();
+            // $zip->close();
         }
 
         return response()->download($fileName);
