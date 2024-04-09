@@ -86,7 +86,7 @@ class CoordinatorController extends Controller
         $fileName = $file . '.zip';
 
         if ($zip->open($fileName, ZipArchive::CREATE) === TRUE) {
-            $multi_files = File::files(public_path('files'));
+            $multi_files = File::files(public_path('/storage/files'));
             foreach ($multi_files as $files) {
                 // $single_file = public_path("/storage/files/" . $file);
                 $nameInZipFile = basename($files);
