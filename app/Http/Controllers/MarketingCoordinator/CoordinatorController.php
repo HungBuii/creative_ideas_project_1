@@ -84,7 +84,7 @@ class CoordinatorController extends Controller
     {
         $zip = new ZipArchive();
         $fileName = $file .'.zip';
-        if ($zip->open($fileName, ZipArchive::CREATE))
+        if ($zip->open(public_path($fileName), ZipArchive::CREATE))
         {
             $single_file = public_path('/storage/files/' . $file);
             $nameInZipFile = basename($single_file);
@@ -92,7 +92,7 @@ class CoordinatorController extends Controller
             $zip->close();
         }
 
-        return response()->download($fileName);
+        return response()->download(public_path($fileName));
 
         // $zipFileName = 'chayde_' . now()->format('YmdHis') . '.zip';
         // $zipFilePath = public_path($zipFileName);
