@@ -81,21 +81,39 @@ class CoordinatorController extends Controller
     // Download file (Zip)
     public function download_file($file)
     {
+        // $zip = new ZipArchive();
+        // $fileName = $file .'.zip';
+        // // $filePath = public_path('/storage/files/' . $file);
+        // if ($zip->open($fileName, ZipArchive::CREATE))
+        // {
+        //     // $single_file = File::files(public_path('/storage/files/' . $file));
+        //     // if (File::exists($filePath)) {
+        //     //     $zip->addFile($filePath, $fileName);
+        //     // }
+        //     $single_file = public_path('/storage/files/' . $file);
+        //     $nameInZipFile = basename($single_file);
+        //     $zip->addFile($single_file, $nameInZipFile);
+        //     $zip->close();
+        // }
+
+        // return response()->download($fileName);
+
+        $zipFileName = 'chayde_' . now()->format('YmdHis') . '.zip';
+        $zipFilePath = public_path($zipFileName);
+
+        // Khởi tạo đối tượng ZipArchive
         $zip = new ZipArchive();
-        $fileName = $file .'.zip';
-        // $filePath = public_path('/storage/files/' . $file);
-        if ($zip->open($fileName, ZipArchive::CREATE))
-        {
-            // $single_file = File::files(public_path('/storage/files/' . $file));
-            // if (File::exists($filePath)) {
-            //     $zip->addFile($filePath, $fileName);
-            // }
-            $single_file = public_path('/storage/files/' . $file);
-            $nameInZipFile = basename($single_file);
-            $zip->addFile($single_file, $nameInZipFile);
+        if ($zip->open($zipFilePath, ZipArchive::CREATE) === true) {
+            // Thêm các tệp đã tải lên vào tập tin ZIP
+            $fileNames = explode(',', $file);
+            foreach ($fileNames as $fileName) {
+                $filePath = public_path('storage/files/' . $fileName);
+                if (File::exists($filePath)) {
+                    $zip->addFile($filePath, $fileName);
+                }
+            }
             $zip->close();
         }
-
-        return response()->download($fileName);
+        return response()->download($zipFilePath, $zipFileName)->deleteFileAfterSend(true);
     }
 }
