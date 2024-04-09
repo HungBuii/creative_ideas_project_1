@@ -87,7 +87,7 @@ class CoordinatorController extends Controller
             $zip = new ZipArchive();
             $fileName = $file . '.zip';
     
-            if ($zip->open($fileName, ZipArchive::CREATE) === TRUE) {
+            if ($zip->open($fileName, ZipArchive::CREATE)) {
                 $multi_files = File::files(public_path('/storage/files'));
                 foreach ($multi_files as $files) 
                 {
@@ -95,9 +95,9 @@ class CoordinatorController extends Controller
                     $nameInZipFile = basename($files);
                     $zip->addFile($files, $nameInZipFile);
                 }
-                $zip->close();
+                
             }
-    
+            $zip->close();
             return response()->download($fileName);
             // return Storage::download($fileName);
         }
