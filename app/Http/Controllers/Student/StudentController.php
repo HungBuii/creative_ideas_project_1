@@ -127,8 +127,8 @@ class StudentController extends Controller
         }
 
         $file = $request->file;
-        // $filename = $student->name. '.' .$file->getClientOriginalExtension();
-        $filename = Str::slug($file->getClientOriginalName());
+        $filename = $student->name. '.' .$file->getClientOriginalExtension();
+        // $filename = Str::slug($file->getClientOriginalName());
         $request->file->move(public_path('/storage/files/'), $filename);
 
         $single_idea = Idea::where('id', $id)->first();
