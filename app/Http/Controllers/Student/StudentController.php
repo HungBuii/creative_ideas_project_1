@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Student;
 
-use App\Models\Faculty;
 use App\Models\Idea;
+use App\Models\Faculty;
 use App\Models\Student;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -77,14 +78,15 @@ class StudentController extends Controller
         $request->validate([
             'topic' => 'required',
             'tag' => 'required',
-            'file' => 'required|mimes:docx',
+            'file' => 'required|mimes:docx,jpg,jpeg,png,gif',
         ]);
 
         $single_faculty = Faculty::where('id', $id)->first();
         $student = Student::where('id', $request->student_id)->first();
 
         $file = $request->file;
-        $filename = $student->name. '.' .$file->getClientOriginalExtension();
+        // $filename = $student->name. '.' .$file->getClientOriginalExtension();
+        $filename = Str::slug($file->getClientOriginalName());
         $request->file->move(public_path('/storage/files/'), $filename);
 
         $new_idea = new Idea();
@@ -116,7 +118,7 @@ class StudentController extends Controller
     public function edit_submit_idea(Request $request, $id)
     {
         $request->validate([
-            'file' => 'required|mimes:docx',
+            'file' => 'required|mimes:docx,jpg,jpeg,png,gif',
         ]);   
 
         $student = Student::where('id', $request->student_id)->first();
@@ -125,7 +127,8 @@ class StudentController extends Controller
         }
 
         $file = $request->file;
-        $filename = $student->name. '.' .$file->getClientOriginalExtension();
+        // $filename = $student->name. '.' .$file->getClientOriginalExtension();
+        $filename = Str::slug($file->getClientOriginalName());
         $request->file->move(public_path('/storage/files/'), $filename);
 
         $single_idea = Idea::where('id', $id)->first();

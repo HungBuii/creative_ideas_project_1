@@ -90,7 +90,7 @@
                         <!-- Edit -->
                         <button type="button" class="btn btn-warning" data-toggle="modal"
                             data-target=".bd-example-modal-lg" style="margin-left: 50%"><i
-                                class="feather mr-2 icon-edit"></i>Edit Post
+                                class="feather mr-2 icon-edit"></i>Edit Idea
                         </button>
 
                         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
@@ -98,7 +98,7 @@
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title h4" id="myLargeModalLabel">Edit Post</h5>
+                                        <h5 class="modal-title h4" id="myLargeModalLabel">Edit Idea</h5>
                                         <button type="button" class="close" data-dismiss="modal"
                                             aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
@@ -136,6 +136,106 @@
 
                                                         </div>
                                                     </div>
+
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                                        <label class="custom-control-label" for="customCheck1">I have read and
+                                                            agreed to the <a href="#!" type="button" data-toggle="modal"
+                                                                data-target="#exampleModalCenter">Term of Conditions</a></label>
+                                                        <div id="exampleModalCenter" class="modal fade" tabindex="-1"
+                                                            role="dialog" aria-labelledby="exampleModalCenterTitle"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalCenterTitle">
+                                                                            Terms and Conditions for Submitting a Post
+                                                                        </h5>
+                                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                            aria-label="Close"><span
+                                                                                aria-hidden="true">&times;</span></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <p class="mb-0" style="word-wrap: break-word;">By
+                                                                            submitting a post to the university platform, you
+                                                                            agree to adhere to the following terms and
+                                                                            conditions:</p>
+        
+                                                                        <p>1. <b>Originality: You certify that the content
+                                                                                submitted is your original work and does not
+                                                                                infringe upon the intellectual property rights
+                                                                                of any third party.</p></b>
+        
+                                                                        <p>2. <b>Accuracy: You warrant that all information
+                                                                                provided in the post is accurate and truthful to
+                                                                                the best of your knowledge.</p></b>
+        
+                                                                        <p>3. <b>0Respect: You agree to maintain a respectful
+                                                                                tone in your post, refraining from any language
+                                                                                or content that is defamatory, discriminatory,
+                                                                                or offensive.</p></b>
+        
+                                                                        <p>4. <b>Appropriateness: You acknowledge that the
+                                                                                university platform is intended for academic
+                                                                                discourse and will refrain from posting content
+                                                                                that is inappropriate, including but not limited
+                                                                                to, content of a sexual, violent, or explicit
+                                                                                nature.</p></b>
+        
+                                                                        <p>5. <b>Copyright: You grant the university a
+                                                                                non-exclusive, royalty-free, perpetual, and
+                                                                                worldwide license to use, reproduce, modify,
+                                                                                adapt, publish, translate, distribute, and
+                                                                                display the content submitted in any medium or
+                                                                                format.</p></b>
+        
+                                                                        <p>6. <b>Privacy: You will not disclose any personal or
+                                                                                sensitive information of yourself or others in
+                                                                                your post without their explicit consent.</p>
+                                                                        </b>
+        
+                                                                        <p>7. <b>Compliance: You agree to comply with all
+                                                                                university policies, including but not limited
+                                                                                to, policies on academic integrity, conduct, and
+                                                                                acceptable use of technology.</p></b>
+        
+                                                                        <p>8. <b>Responsibility: You acknowledge that you are
+                                                                                solely responsible for the content you submit
+                                                                                and any consequences that may arise from its
+                                                                                publication.</p></b>
+        
+                                                                        <p>9. <b>Indemnity: You agree to indemnify and hold the
+                                                                                university harmless from any claims, damages,
+                                                                                losses, or liabilities arising out of or related
+                                                                                to your submission, including but not limited
+                                                                                to, claims of copyright infringement,
+                                                                                defamation, or violation of privacy rights.</p>
+                                                                        </b>
+        
+                                                                        <p>10. <b>Moderation: The university reserves the right
+                                                                                to moderate, edit, or remove any content
+                                                                                submitted to the platform that violates these
+                                                                                terms and conditions or is otherwise deemed
+                                                                                inappropriate.<br></b>
+        
+                                                                        <p>11. <b>Termination: The university reserves the right
+                                                                                to suspend or terminate your access to the
+                                                                                platform in the event of repeated violations of
+                                                                                these terms and conditions.</p></b>
+        
+                                                                        <p>By submitting a post to the university platform, you
+                                                                            acknowledge that you have read, understood, and
+                                                                            agree to be bound by these terms and conditions.</p>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn  btn-secondary"
+                                                                            data-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                     <button type="submit" class="btn btn-primary">Submit</button>
                                                 </div>
                                             </form>
