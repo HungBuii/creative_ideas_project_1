@@ -51,7 +51,7 @@
             </div>
             <div class="card"
                 style="width: 300px; margin: 10px; padding: 20px; border: 1px solid #ccc; border-radius: 5px; text-align: center;">
-                <img class="img-fluid card-img-top" src="https://avatars.githubusercontent.com/u/20041501?v=4"
+                <img class="img-fluid card-img-top" src="https://thanhnien.mediacdn.vn/uploaded/dieutrang.qc/2021_04_23/greenwish/greenwich-3_DCDV.jpg?width=500"
                     alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Teacher Appreciation</h5>
