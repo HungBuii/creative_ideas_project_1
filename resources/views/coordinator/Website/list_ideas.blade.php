@@ -91,6 +91,23 @@
                                     style="max-width: 257px; max-height: 257px; margin-left: 220px"
                                     class="profile-picture" alt="User-Image">
                                 <!-- Comment !-->
+                                @if ($item->status == 0)
+                                <a href="{{ route('coordinator_choose_typical_idea', $item->id) }}">
+                                    <button type="submit" class="btn btn-primary">
+                                        Choose this typical idea
+                                    </button>
+                                </a> 
+                                @else
+                                <a href="{{ route('coordinator_remove_typical_idea', $item->id) }}">
+                                    <button type="submit" class="btn btn-primary" style="background-color: red">
+                                        Remove this idea from the list of featured ideas!
+                                    </button>
+                                </a> 
+                                @endif
+                                
+                                
+                                <br><br>
+
                                 <p><a class="btn mb-1 btn-primary" data-toggle="collapse" href="#multiCollapseExample1">
                                         <i class="feather mr-2 icon-message-square"></i>Comment</a>
                                 <div class="collapse multi-collapse mt-2" id="multiCollapseExample1">
@@ -108,12 +125,13 @@
                                                     @endisset
                                                     </textarea>
                                                 </div>
+                                                
                                                 @isset($item->comment->content)
                                                 <button type="submit" class="btn btn-primary">Update</button>
                                                 @else
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                                 @endisset
-                                                
+                            
                                             </div>
                                         </form>
                                     </div>

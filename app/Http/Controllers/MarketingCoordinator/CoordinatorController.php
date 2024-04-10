@@ -158,6 +158,35 @@ class CoordinatorController extends Controller
     // List outstanding ideas view
     public function list_outstanding_ideas()
     {
-        return view('coordinator.Website.list_outstanding_ideas');
+        $ideas = Idea::where('status', 1)->get();
+        return view('coordinator.Website.list_outstanding_ideas', compact('ideas'));
+    }
+
+    // Choose typical idea submit
+    public function choose_typical_idea($id)
+    {
+        $idea = Idea::where('id', $id)->first();
+        if ($idea->status == 0)
+        {
+            $idea->status = 1;
+            $idea->update();
+        }
+        else
+        {
+            return redirect()->back()->with('error', 'This idea is already in the featured ideas section!');
+        }
+        return redirect()->back()->with('success', 'This idea has been added to the list of featured ideas!');
+    }
+
+    // Remove typical idea submit
+    public function remove_typical_idea($id)
+    {
+        $idea = Idea::where('id', $id)->first();
+        if ($idea->status == 1)
+        {
+            $idea->status = 0;
+            $idea->update();
+        }
+        return redirect()->back()->with('success', 'This idea has been removed from the list of featured ideas!');
     }
 }

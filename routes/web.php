@@ -90,7 +90,12 @@ Route::get('/coordinator/download/{file}', [CoordinatorController::class, 'downl
 
 Route::post('/coordinator/comment-submit/idea/{id}', [CoordinatorController::class, 'comment_submit'])->name('coordinator_comment_submit')->middleware('coordinator:coordinator'); // comment submit
 
+Route::get('/coordinator/idea/{id}/active-status', [CoordinatorController::class, 'choose_typical_idea'])->name('coordinator_choose_typical_idea')->middleware('coordinator:coordinator'); // Choose typical idea submit
+
+Route::get('/coordinator/idea/{id}/deactive-status', [CoordinatorController::class, 'remove_typical_idea'])->name('coordinator_remove_typical_idea')->middleware('coordinator:coordinator'); // Remove typical idea submit
+
 Route::get('/coordinator/list-outstanding-ideas', [CoordinatorController::class, 'list_outstanding_ideas'])->name('coordinator_list_outstanding_ideas')->middleware('coordinator:coordinator'); // List outstanding ideas
+
 
 
 /* Student */
