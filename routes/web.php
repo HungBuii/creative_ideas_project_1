@@ -90,6 +90,8 @@ Route::get('/coordinator/download/{file}', [CoordinatorController::class, 'downl
 
 Route::post('/coordinator/comment-submit/idea/{id}', [CoordinatorController::class, 'comment_submit'])->name('coordinator_comment_submit')->middleware('coordinator:coordinator'); // comment submit
 
+Route::get('/coordinator/list-outstanding-ideas', [CoordinatorController::class, 'list_outstanding_ideas'])->name('coordinator_list_outstanding_ideas')->middleware('coordinator:coordinator'); // List outstanding ideas
+
 
 /* Student */
 Route::get('/student/login', [StudentController::class, 'login_view'])->name('student_login'); // login

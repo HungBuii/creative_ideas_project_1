@@ -27,7 +27,7 @@
                     <a href="#" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Event</span></a>
                     <ul class="pcoded-submenu">
                         <li><a href="{{ route('coordinator_faculties') }}" target="">Faculties</a></li>
-                        <li><a href="" target="">Outstanding ideas</a></li>
+                        <li><a href="{{ route('coordinator_list_outstanding_ideas') }}" target="">Outstanding ideas</a></li>
                     </ul>
                 </li>
             </ul>

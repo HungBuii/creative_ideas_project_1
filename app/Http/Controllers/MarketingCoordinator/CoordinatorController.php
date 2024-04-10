@@ -154,4 +154,10 @@ class CoordinatorController extends Controller
             return redirect()->route('coordinator_list_ideas', $current_idea->faculty_id)->with('success', 'Added a comment successfully!');
         }
     }
+
+    // List outstanding ideas view
+    public function list_outstanding_ideas()
+    {
+        return view('coordinator.Website.list_outstanding_ideas');
+    }
 }
