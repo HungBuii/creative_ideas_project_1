@@ -134,7 +134,7 @@
                                                                         provided in the post is accurate and truthful to
                                                                         the best of your knowledge.</p></b>
 
-                                                                <p>3. <b>0Respect: You agree to maintain a respectful
+                                                                <p>3. <b>Respect: You agree to maintain a respectful
                                                                         tone in your post, refraining from any language
                                                                         or content that is defamatory, discriminatory,
                                                                         or offensive.</p></b>
