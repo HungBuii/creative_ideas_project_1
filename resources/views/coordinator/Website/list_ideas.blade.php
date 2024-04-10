@@ -46,21 +46,20 @@
                                 <div class="form-group">
                                     <label>Description:</label>
                                     <p>{{ $single_faculty->description }}</p>
-                                    <li><b>Deadline <i class="feather mr-2 icon-calendar"></i></b>: {{
+                                    <b>Deadline <i class="feather mr-2 icon-calendar"></i></b>: {{
                                         $single_faculty->date_start }} -
-                                        {{ $single_faculty->date_end }}</li>
+                                        {{ $single_faculty->date_end }}
                                 </div>
 
                             </form>
                         </div>
                         <div class="col-md-6">
                             @foreach ($single_faculty->ideas as $item)
-                            <form>
-                                <img alt="No image"
-                                    src="{{ asset('/storage/uploads/'.$item->student->photo) }}"
+                            {{-- <form> --}}
+                                <img alt="No image" src="{{ asset('/storage/uploads/'.$item->student->photo) }}"
                                     class="img-radius" style="max-width: 50px; max-height: 50px">
                                 <span>{{ $item->student->name }}</span>
-                                
+
                                 <p>
                                     <i class="feather mr-2 icon-calendar"></i>
                                     Created at <b>{{ $item->created_at }}</b>
@@ -96,18 +95,31 @@
                                         <i class="feather mr-2 icon-message-square"></i>Comment</a>
                                 <div class="collapse multi-collapse mt-2" id="multiCollapseExample1">
                                     <div class="card">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label>Comment</label>
-                                                <textarea id="text" class="form-control" rows="4" cols="50"
-                                                    placeholder="Enter Comment"></textarea>
+                                        <form action="{{ route('coordinator_comment_submit', $item->id) }}"
+                                            method="POST">
+                                            @csrf
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label>Comment</label>
+                                                    <textarea id="text" class="form-control" rows="4" cols="50"
+                                                        placeholder="Enter Comment" name="content">
+                                                    @isset($item->comment->content)
+                                                    {{ $item->comment->content }}
+                                                    @endisset
+                                                    </textarea>
+                                                </div>
+                                                @isset($item->comment->content)
+                                                <button type="submit" class="btn btn-primary">Update</button>
+                                                @else
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                @endisset
+                                                
                                             </div>
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                                 </p>
-                            </form>
+                            {{-- </form> --}}
 
                             <br>
 

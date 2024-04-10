@@ -81,6 +81,14 @@
                                                     class="profile-picture" alt="User-Image">
                                             </th>
                                         </tr>
+                                        <p>
+                                            Feedback:
+                                            @isset($current_student->idea->comment)
+                                            {{ $current_student->idea->comment->content }}
+                                            @else
+                                            No comment
+                                            @endisset
+                                        </p>
                                     </tbody>
                                 </table>
                             </div>

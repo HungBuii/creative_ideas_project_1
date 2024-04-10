@@ -88,6 +88,8 @@ Route::get('/coordinator/faculty/{id}/list-ideas', [CoordinatorController::class
 
 Route::get('/coordinator/download/{file}', [CoordinatorController::class, 'download_file'])->name('coordinator_download_file')->middleware('coordinator:coordinator'); // Download file
 
+Route::post('/coordinator/comment-submit/idea/{id}', [CoordinatorController::class, 'comment_submit'])->name('coordinator_comment_submit')->middleware('coordinator:coordinator'); // comment submit
+
 
 /* Student */
 Route::get('/student/login', [StudentController::class, 'login_view'])->name('student_login'); // login

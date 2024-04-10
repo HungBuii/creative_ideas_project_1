@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\MarketingCoordinator;
 
+use App\Models\Comment;
 use ZipArchive;
 use App\Models\Idea;
 use App\Models\Faculty;
@@ -76,7 +77,7 @@ class CoordinatorController extends Controller
     // Download file (Docx, image)
     public function download_file($file)
     {
-        return response()->download(public_path('/storage/files/' .$file));
+        return response()->download(public_path('/storage/files/' . $file));
     }
 
     // Download file (Zip)
@@ -85,8 +86,8 @@ class CoordinatorController extends Controller
     //     try
     //     {
     //         $zip = new ZipArchive();
-    //         $fileName = $file . '.zip';
-    
+    //         $fileName = 'mananger' . '.zip';
+
     //         if ($zip->open($fileName, ZipArchive::CREATE)) {
     //             $multi_files = File::files(public_path('/storage/files'));
     //             foreach ($multi_files as $files) 
@@ -95,7 +96,7 @@ class CoordinatorController extends Controller
     //                 $nameInZipFile = basename($files);
     //                 $zip->addFile($files, $nameInZipFile);
     //             }
-                
+
     //         }
     //         $zip->close();
     //         return response()->download($fileName);
@@ -124,4 +125,33 @@ class CoordinatorController extends Controller
     //     // }
     //     // return response()->download($zipFilePath, $zipFileName)->deleteFileAfterSend(true);
     // }
+
+    // Comment submit
+    public function comment_submit(Request $request, $id)
+    {
+        $request->validate([
+            'content' => 'nullable'
+        ]);
+        $current_idea = Idea::where('id', $id)->first();
+        $check_comment = Comment::where('idea_id', $id)->first();
+
+        if ($current_idea) {
+            if ($check_comment)
+            {
+                $check_comment->content = $request->content;
+                $check_comment->idea_id = $current_idea->id;
+                $check_comment->coordinator_id = Auth::guard('coordinator')->user()->id;
+                $check_comment->update();
+
+                return redirect()->route('coordinator_list_ideas', $current_idea->faculty_id)->with('success', 'Updated a comment successfully!');
+            }
+            $comment = new Comment;
+            $comment->content = $request->content;
+            $comment->idea_id = $current_idea->id;
+            $comment->coordinator_id = Auth::guard('coordinator')->user()->id;
+            $comment->save();
+            
+            return redirect()->route('coordinator_list_ideas', $current_idea->faculty_id)->with('success', 'Added a comment successfully!');
+        }
+    }
 }

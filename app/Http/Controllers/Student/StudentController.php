@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Student;
 
+use App\Models\Comment;
 use App\Models\Idea;
 use App\Models\Faculty;
 use App\Models\Student;
@@ -111,7 +112,8 @@ class StudentController extends Controller
     public function edit_submit_idea_view($id)
     {
         $single_faculty = Faculty::where('id', $id)->first();
-        return view('student.Website.edit_submit_idea', compact('single_faculty'));
+        $current_student = Student::where('id', Auth::guard('student')->user()->id)->first();
+        return view('student.Website.edit_submit_idea', compact('single_faculty', 'current_student'));
     }
 
     // Submit edit idea

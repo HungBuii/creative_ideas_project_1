@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Idea extends Model
 {
@@ -14,5 +15,11 @@ class Idea extends Model
     public function student(): BelongsTo
     {
         return $this->belongsTo(Student::class, 'student_id');
+    }
+
+    // Idea vs comment (Coordinator): 1 idea has 1 comment
+    public function comment(): HasOne
+    {
+        return $this->hasOne(Comment::class, 'idea_id');
     }
 }
