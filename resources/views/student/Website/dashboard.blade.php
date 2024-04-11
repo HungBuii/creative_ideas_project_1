@@ -143,7 +143,7 @@
             <div class="col-xl-6 col-md-12">
                 <div class="card table-card">
                     <div class="card-header">
-                        <h5>Recent Courses</h5>
+                        <h5>Recent Ideas</h5>
                         <div class="card-header-right">
                             <div class="btn-group card-option">
                                 <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"

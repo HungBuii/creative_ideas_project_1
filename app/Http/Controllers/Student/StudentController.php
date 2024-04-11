@@ -53,6 +53,12 @@ class StudentController extends Controller
         return view('student.Website.home');
     }
 
+    // Profile view
+    public function profile()
+    {
+        return view('student.Website.profile');
+    }
+
     // Dashboard
     public function dashboard()
     {
@@ -99,7 +105,7 @@ class StudentController extends Controller
 
         $new_idea->save();
 
-        return redirect()->route('student_current_faculty', $single_faculty->id)->with('success', 'Add new successful ideas!');
+        return redirect()->route('student_edit_submit_idea_view', $single_faculty->id)->with('success', 'Add new successful ideas!');
     }
 
     // Download file

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Idea;
 use App\Models\Admin;
 use App\Models\Faculty;
-use App\Models\MarketingCoordinator;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\MarketingManager;
 use App\Http\Controllers\Controller;
+use App\Models\MarketingCoordinator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -461,9 +462,7 @@ class AdminController extends Controller
         if ($select_coordinator == '...') {
             $single_faculty->coordinator_id = 0;
             $single_faculty->update();
-        } 
-        else 
-        {
+        } else {
             $coordinator = MarketingCoordinator::where('name', $select_coordinator)->first();
             if ($single_faculty->coordinator_id == $coordinator->id) {
                 $single_faculty->coordinator_id = $coordinator->id;
@@ -497,9 +496,7 @@ class AdminController extends Controller
         $delete_student = $request->input('delete_student');
         if ($delete_student == '...') {
             $single_faculty->update();
-        }
-        else
-        {
+        } else {
             $student = Student::where('name', $delete_student)->first();
             $student->faculty_id = 0;
             $student->update();
@@ -515,6 +512,18 @@ class AdminController extends Controller
     public function delete_faculty_submit($id)
     {
         $single_faculty = Faculty::where('id', $id)->first();
+        $remove_idea = Idea::where('faculty_id', $single_faculty->id);
+
+        if ($single_faculty) {
+            $students = Student::where('faculty_id', $single_faculty->id)->get();
+            foreach ($students as $student) {
+                $student->faculty_id = 0;
+                $student->update();
+            }
+            
+        }
+
+        $remove_idea->delete();
         $single_faculty->delete();
 
         return redirect()->route('admin_faculties')->with('success', 'Deleted a faculty successfully!');

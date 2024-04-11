@@ -51,14 +51,14 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-notification">
                         <div class="pro-head">
-                            <img alt="No image" src="{{ asset('/storage/uploads/'. Auth::guard('student')->user()->photo) }}" class="img-radius">
-                            <span>{{ Auth::guard('student')->user()->name }}</span>
-                            <a href="{{ route('student_logout') }}" class="dud-logout" title="Logout">
+                            <img alt="No image" src="{{ asset('/storage/uploads/' . Auth::guard('manager')->user()->photo) }}" class="img-radius">
+                            <span>{{ Auth::guard('manager')->user()->name }}</span>
+                            <a href="{{ route('manager_logout') }}" class="dud-logout" title="Logout">
                                 <i class="feather icon-log-out"></i>
                             </a>
                         </div>
                         <ul class="pro-body">
-                            <li><a href="{{ route('student_profile') }}" class="dropdown-item"><i
+                            <li><a href="{{ route('manager_profile') }}" class="dropdown-item"><i
                                         class="feather icon-user"></i>
                                     Profile</a></li>
                         </ul>

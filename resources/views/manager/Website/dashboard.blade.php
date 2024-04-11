@@ -1,6 +1,6 @@
-@extends('admin.Website.layout.app')
+@extends('manager.Website.layout.app')
 
-@section('title', 'Admin Dashboard')
+@section('title', 'Manager Dashboard')
 
 @section('main_content')
 <div class="pcoded-main-container">
