@@ -94,7 +94,7 @@ class ManagerController extends Controller
             $current_zip = File::isFile($fileName);
 
             if ($current_zip) {
-                return response()->download($fileName);
+                return response()->download(public_path($fileName));
             } else {
                 $zip = new ZipArchive();
 
