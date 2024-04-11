@@ -40,7 +40,7 @@
                                 Sign in
                             </button>
                             <p><a href="{{ route('admin_login') }}">Admin Login</a></p>
-                            <p><a href="">Marketing Manager Login</a></p>
+                            <p><a href="{{ route('manager_student') }}">Marketing Manager Login</a></p>
                             <p><a href="{{ route('student_login') }}">Student Login</a></p>
                         </form>
                     </div>

@@ -91,14 +91,7 @@ class ManagerController extends Controller
             $faculty = Faculty::where('id', $id)->first();
 
             $fileName = 'faculty_' . $faculty->name . '.zip';
-            $current_zip = File::isFile($fileName);
-
-            // if ($current_zip) {
-            //     return response()->download(public_path($fileName));
-            // } 
-            // else 
-            // {
-                $zip = new ZipArchive();
+            $zip = new ZipArchive();
 
                 // $fileName = 'faculty_' . $faculty->name . '.zip';
 

@@ -1,6 +1,6 @@
 @extends('student.Website.layout.app')
 
-@section('title', 'Create Idea Post')
+@section('title', 'Edit Idea Post')
 
 @section('main_content')
 <section class="pcoded-main-container">
