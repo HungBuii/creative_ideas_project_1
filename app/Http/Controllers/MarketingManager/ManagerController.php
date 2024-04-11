@@ -90,18 +90,37 @@ class ManagerController extends Controller
             $ideas = Idea::where('faculty_id', $id)->get();
             $faculty = Faculty::where('id', $id)->first();
 
-            $zip = new ZipArchive();
+            $fileName = 'faculty_' . $faculty->name . '.zip';
+            $current_zip = File::isFile($fileName);
 
-            $fileName = 'faculty_'. $faculty->name . '.zip';
+            if ($current_zip) {
+                return response()->download($fileName);
+            } else {
+                $zip = new ZipArchive();
 
-            if ($zip->open($fileName, ZipArchive::CREATE)) {
-                foreach ($ideas as $item) {
-                    $nameInZipFile = basename($item->file);
-                    $zip->addFile(public_path('/storage/files/' . $item->file), $nameInZipFile);
+                // $fileName = 'faculty_' . $faculty->name . '.zip';
+
+                if ($zip->open($fileName, ZipArchive::CREATE)) {
+                    foreach ($ideas as $item) {
+                        $nameInZipFile = basename($item->file);
+                        $zip->addFile(public_path('/storage/files/' . $item->file), $nameInZipFile);
+                    }
                 }
+                $zip->close();
+                return response()->download($fileName);
             }
-            $zip->close();
-            return response()->download($fileName);
+            // $zip = new ZipArchive();
+
+            // $fileName = 'faculty_'. $faculty->name . '.zip';
+
+            // if ($zip->open($fileName, ZipArchive::CREATE)) {
+            //     foreach ($ideas as $item) {
+            //         $nameInZipFile = basename($item->file);
+            //         $zip->addFile(public_path('/storage/files/' . $item->file), $nameInZipFile);
+            //     }
+            // }
+            // $zip->close();
+            // return response()->download($fileName);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
