@@ -377,6 +377,10 @@ class AdminController extends Controller
         if (file_exists(public_path('/storage/uploads/' . $single_student->photo)) and (!empty($single_student->photo))) {
             unlink(public_path('/storage/uploads/' . $single_student->photo));
         }
+
+        $idea_student = Idea::where('student_id', $single_student->id)->first();
+        
+        $idea_student->delete();
         $single_student->delete();
 
         return redirect()->route('admin_list_accounts')->with('success', 'Deleted an Student account successfully!');

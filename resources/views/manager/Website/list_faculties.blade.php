@@ -46,7 +46,7 @@
                                     @foreach ($faculties as $faculty)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td><a href="">{{ $faculty->name }}</a>
+                                        <td><a href="{{ route('manager_ideas', $faculty->id) }}">{{ $faculty->name }}</a>
                                         </td>
                                         <td>{{ $faculty->date_start }}</td>
                                         <td>{{ $faculty->date_end }}</td>

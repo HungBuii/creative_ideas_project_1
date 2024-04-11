@@ -81,6 +81,10 @@ Route::get('/manager/dashboard', [ManagerController::class, 'dashboard'])->name(
 
 Route::get('/manager/list-faculties', [ManagerController::class, 'list_faculties'])->name('manager_faculties')->middleware('manager:manager'); // List faculties view
 
+Route::get('/manager/faculty/{id}/list-ideas', [ManagerController::class, 'list_ideas'])->name('manager_ideas')->middleware('manager:manager'); // List ideas view
+
+Route::get('/manager/faculty/{id}/download', [ManagerController::class, 'download_file'])->name('manager_download_file')->middleware('manager:manager'); // Download file
+
 
 /* Marketing Coordinator */
 Route::get('/coordinator/login', [CoordinatorController::class, 'login_view'])->name('coordinator_login'); // login

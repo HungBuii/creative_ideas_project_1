@@ -106,24 +106,6 @@ class CoordinatorController extends Controller
     //     {
     //         return response()->json(['error' => $e->getMessage()], 500);
     //     }
-
-    //     // $zipFileName = 'chayde_' . now()->format('YmdHis') . '.zip';
-    //     // $zipFilePath = public_path($zipFileName);
-
-    //     // // Khởi tạo đối tượng ZipArchive
-    //     // $zip = new ZipArchive();
-    //     // if ($zip->open($zipFilePath, ZipArchive::CREATE) === true) {
-    //     //     // Thêm các tệp đã tải lên vào tập tin ZIP
-    //     //     $fileNames = explode(',', $file);
-    //     //     foreach ($fileNames as $fileName) {
-    //     //         $filePath = public_path('storage/files/' . $fileName);
-    //     //         if (File::exists($filePath)) {
-    //     //             $zip->addFile($filePath, $fileName);
-    //     //         }
-    //     //     }
-    //     //     $zip->close();
-    //     // }
-    //     // return response()->download($zipFilePath, $zipFileName)->deleteFileAfterSend(true);
     // }
 
     // Comment submit
