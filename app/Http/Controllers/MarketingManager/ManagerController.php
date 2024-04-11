@@ -93,22 +93,24 @@ class ManagerController extends Controller
             $fileName = 'faculty_' . $faculty->name . '.zip';
             $current_zip = File::isFile($fileName);
 
-            if ($current_zip) {
-                return response()->download(public_path($fileName));
-            } else {
+            // if ($current_zip) {
+            //     return response()->download(public_path($fileName));
+            // } 
+            // else 
+            // {
                 $zip = new ZipArchive();
 
                 // $fileName = 'faculty_' . $faculty->name . '.zip';
 
-                if ($zip->open($fileName, ZipArchive::CREATE)) {
+                if ($zip->open(public_path('/storage/files/' .$fileName), ZipArchive::CREATE)) {
                     foreach ($ideas as $item) {
                         $nameInZipFile = basename($item->file);
                         $zip->addFile(public_path('/storage/files/' . $item->file), $nameInZipFile);
                     }
                 }
                 $zip->close();
-                return response()->download($fileName);
-            }
+                return response()->download(public_path('/storage/files/' .$fileName));
+            // }
             // $zip = new ZipArchive();
 
             // $fileName = 'faculty_'. $faculty->name . '.zip';
