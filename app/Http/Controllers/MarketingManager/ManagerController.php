@@ -92,30 +92,14 @@ class ManagerController extends Controller
 
             $fileName = 'faculty_' . $faculty->name . '.zip';
             $zip = new ZipArchive();
-
-                // $fileName = 'faculty_' . $faculty->name . '.zip';
-
-                if ($zip->open(public_path('/storage/files/' .$fileName), ZipArchive::CREATE)) {
-                    foreach ($ideas as $item) {
-                        $nameInZipFile = basename($item->file);
-                        $zip->addFile(public_path('/storage/files/' . $item->file), $nameInZipFile);
-                    }
+            if ($zip->open(public_path('/storage/files/' . $fileName), ZipArchive::CREATE)) {
+                foreach ($ideas as $item) {
+                    $nameInZipFile = basename($item->file);
+                    $zip->addFile(public_path('/storage/files/' . $item->file), $nameInZipFile);
                 }
-                $zip->close();
-                return response()->download(public_path('/storage/files/' .$fileName));
-            // }
-            // $zip = new ZipArchive();
-
-            // $fileName = 'faculty_'. $faculty->name . '.zip';
-
-            // if ($zip->open($fileName, ZipArchive::CREATE)) {
-            //     foreach ($ideas as $item) {
-            //         $nameInZipFile = basename($item->file);
-            //         $zip->addFile(public_path('/storage/files/' . $item->file), $nameInZipFile);
-            //     }
-            // }
-            // $zip->close();
-            // return response()->download($fileName);
+            }
+            $zip->close();
+            return response()->download(public_path('/storage/files/' . $fileName));
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
