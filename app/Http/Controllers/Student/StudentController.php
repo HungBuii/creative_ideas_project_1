@@ -106,6 +106,7 @@ class StudentController extends Controller
         $new_idea->save();
 
         return redirect()->route('student_edit_submit_idea_view', $single_faculty->id)->with('success', 'Add new successful ideas!');
+        // return redirect()->back()->with('success', 'Add new successful ideas!');
     }
 
     // Download file

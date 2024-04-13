@@ -379,8 +379,11 @@ class AdminController extends Controller
         }
 
         $idea_student = Idea::where('student_id', $single_student->id)->first();
+        if ($idea_student)
+        {
+            $idea_student->delete();
+        }
         
-        $idea_student->delete();
         $single_student->delete();
 
         return redirect()->route('admin_list_accounts')->with('success', 'Deleted an Student account successfully!');
