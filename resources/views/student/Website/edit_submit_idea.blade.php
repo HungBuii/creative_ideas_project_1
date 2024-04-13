@@ -55,6 +55,26 @@
                                         No Coordinator
                                         @endif
                                     </li>
+                                    <div class="accordion" id="accordionExample">
+                                        <div class="card mb-0">
+                                            <div class="card-header" id="headingOne">
+                                                <h5 class="mb-0"><a href="#!" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Feedback</a></h5>
+                                            </div>
+                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <img alt="No image"
+                                                    src="https://wallpapers-clan.com/wp-content/uploads/2023/02/anime-boy-black-pfp-28.jpg"
+                                                    class="img-radius" style="max-width: 50px; max-height: 50px">
+                                                <span>Teacher A</span><p></p>
+                                                @isset($current_student->idea->comment)
+                                                {{ $current_student->idea->comment->content }}
+                                                @else
+                                                No comment
+                                                @endisset
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </form>
@@ -81,21 +101,15 @@
                                                     class="profile-picture" alt="User-Image">
                                             </th>
                                         </tr>
-                                        <p>
-                                            Feedback:
-                                            @isset($current_student->idea->comment)
-                                            {{ $current_student->idea->comment->content }}
-                                            @else
-                                            No comment
-                                            @endisset
-                                        </p>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                        
                         <!-- End of Table -->
 
                         <!-- Edit -->
+                        
                         <button type="button" class="btn btn-warning" data-toggle="modal"
                             data-target=".bd-example-modal-lg" style="margin-left: 50%"><i
                                 class="feather mr-2 icon-edit"></i>Edit Idea

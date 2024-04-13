@@ -115,3 +115,8 @@ Route::post('/student/faculty/{id}/submit-idea', [StudentController::class, 'sub
 Route::get('/student/faculty/{id}/edit', [StudentController::class, 'edit_submit_idea_view'])->name('student_edit_submit_idea_view')->middleware('student:student'); // View Edit Submit idea
 Route::get('/student/download/{file}', [StudentController::class, 'download_file'])->name('student_download_file')->middleware('student:student'); // Download file
 Route::post('/student/idea/{id}/edit-submit', [StudentController::class, 'edit_submit_idea'])->name('student_edit_submit_idea'); // edit submit idea
+
+
+Route::get('/editStu', function () {
+    return view('student.Website.edit_student');
+});
