@@ -10,11 +10,11 @@
                 <div class="row align-items-center">
                     <div class="col-md-12">
                         <div class="page-header-title">
-                            <h5 class="m-b-10">List ideas</h5>
+                            <h5 class="m-b-10">List contributions</h5>
                         </div>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#!"><i class="feather icon-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="#!">List ideas</a></li>
+                            <li class="breadcrumb-item"><a href="#!">List contributions</a></li>
                         </ul>
                     </div>
                 </div>
@@ -94,13 +94,13 @@
                                 @if ($item->status == 0)
                                 <a href="{{ route('coordinator_choose_typical_idea', $item->id) }}">
                                     <button type="submit" class="btn btn-primary">
-                                        Choose this typical idea
+                                        Choose this typical contribution
                                     </button>
                                 </a> 
                                 @else
                                 <a href="{{ route('coordinator_remove_typical_idea', $item->id) }}">
                                     <button type="submit" class="btn btn-primary" style="background-color: red">
-                                        Remove this idea from the list of featured ideas!
+                                        Remove this idea from the list of typical contributions!
                                     </button>
                                 </a> 
                                 @endif
