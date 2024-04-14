@@ -74,15 +74,13 @@ class StudentController extends Controller
         $request->validate([
             'email' => 'email:rfc,dns',
         ]);
-        
-        if ($request->hasFile('photo')) 
-        {
+
+        if ($request->hasFile('photo')) {
             $request->validate([
                 'photo' => 'image|mimes:jpg,jpeg,png,gif',
             ]);
 
-            if (file_exists(public_path('/storage/uploads/' . $single_student->photo)) and (!empty($single_student->photo))) 
-            {
+            if (file_exists(public_path('/storage/uploads/' . $single_student->photo)) and (!empty($single_student->photo))) {
                 unlink(public_path('/storage/uploads/' . $single_student->photo));
             }
 
@@ -126,17 +124,21 @@ class StudentController extends Controller
         $request->validate([
             'topic' => 'required',
             'tag' => 'required',
-            'file' => 'required|mimes:docx,jpg,jpeg,png,gif',
+            // 'file' => 'required|mimes:docx,jpg,jpeg,png,gif',
+            'file' => 'required|file',
         ]);
 
         $single_faculty = Faculty::where('id', $id)->first();
         $student = Student::where('id', $request->student_id)->first();
 
         $file = $request->file;
-        $filename = $student->name. '.' .$file->getClientOriginalExtension();
+        $filename = $student->name . '.' . $file->getClientOriginalExtension();
         // $filename = Str::slug($file->getClientOriginalName());
-        $request->file->move(public_path('/storage/files/'), $filename);
+        $request->file->move(public_path('/storage/pdf/'), $filename); 
 
+        // $filename_temp = $student->name . '.' . 'pdf';
+        // $request->file->move(public_path('/storage/pdf/'), $filename_temp);
+        
         $new_idea = new Idea();
         $new_idea->topic = $request->topic;
         $new_idea->tag = $request->tag;
@@ -153,7 +155,7 @@ class StudentController extends Controller
     // Download file
     public function download_file($file)
     {
-        return response()->download(public_path('/storage/files/' .Auth::guard('student')->user()->idea->file));
+        return response()->download(public_path('/storage/files/' . Auth::guard('student')->user()->idea->file));
     }
 
     // View edit submit idea
@@ -168,16 +170,17 @@ class StudentController extends Controller
     public function edit_submit_idea(Request $request, $id)
     {
         $request->validate([
-            'file' => 'required|mimes:docx,jpg,jpeg,png,gif',
-        ]);   
+            // 'file' => 'required|mimes:docx,jpg,jpeg,png,gif',
+            'file' => 'required|file',
+        ]);
 
         $student = Student::where('id', $request->student_id)->first();
-        if (file_exists(public_path('/storage/files/' .Auth::guard('student')->user()->idea->file)) and (!empty(Auth::guard('student')->user()->idea->file))) {
-            unlink(public_path('/storage/files/' .Auth::guard('student')->user()->idea->file));
+        if (file_exists(public_path('/storage/files/' . Auth::guard('student')->user()->idea->file)) and (!empty(Auth::guard('student')->user()->idea->file))) {
+            unlink(public_path('/storage/files/' . Auth::guard('student')->user()->idea->file));
         }
 
         $file = $request->file;
-        $filename = $student->name. '.' .$file->getClientOriginalExtension();
+        $filename = $student->name . '.' . $file->getClientOriginalExtension();
         // $filename = Str::slug($file->getClientOriginalName());
         $request->file->move(public_path('/storage/files/'), $filename);
 

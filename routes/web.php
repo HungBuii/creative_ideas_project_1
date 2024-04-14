@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Guest\GuestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Student\StudentController;
@@ -17,9 +18,10 @@ use App\Http\Controllers\MarketingCoordinator\CoordinatorController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+/* Guest */
+Route::get('/', [GuestController::class, 'index'])->name('index'); // Homepage
+Route::get('/view-contribution/{id}', [GuestController::class, 'view_contribution'])->name('guest_view_contribution'); // View contribution
+
 
 /* Admin */
 Route::get('/admin/login', [AdminController::class, 'login_view'])->name('admin_login'); // login
@@ -113,7 +115,7 @@ Route::get('/coordinator/idea/{id}/active-status', [CoordinatorController::class
 
 Route::get('/coordinator/idea/{id}/deactive-status', [CoordinatorController::class, 'remove_typical_idea'])->name('coordinator_remove_typical_idea')->middleware('coordinator:coordinator'); // Remove typical idea submit
 
-Route::get('/coordinator/list-outstanding-ideas', [CoordinatorController::class, 'list_outstanding_ideas'])->name('coordinator_list_outstanding_ideas')->middleware('coordinator:coordinator'); // List outstanding ideas
+Route::get('/coordinator/list-outstanding-contributions', [CoordinatorController::class, 'list_outstanding_contributions'])->name('coordinator_list_outstanding_contributions')->middleware('coordinator:coordinator'); // List outstanding contributions
 
 
 

@@ -22,4 +22,10 @@ class Idea extends Model
     {
         return $this->hasOne(Comment::class, 'idea_id');
     }
+
+    // Idea vs Faculty (Student): 1 idea has 1 faculty
+    public function faculty(): BelongsTo
+    {
+        return $this->belongsTo(Faculty::class, 'faculty_id');
+    }
 }

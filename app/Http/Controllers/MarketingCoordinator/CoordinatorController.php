@@ -179,10 +179,10 @@ class CoordinatorController extends Controller
     }
 
     // List outstanding ideas view
-    public function list_outstanding_ideas()
+    public function list_outstanding_contributions()
     {
-        $ideas = Idea::where('status', 1)->get();
-        return view('coordinator.Website.list_outstanding_ideas', compact('ideas'));
+        $contributions = Idea::where('status', 1)->get();
+        return view('coordinator.Website.list_outstanding_contributions', compact('contributions'));
     }
 
     // Choose typical idea submit
