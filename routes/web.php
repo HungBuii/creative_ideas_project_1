@@ -121,6 +121,9 @@ Route::get('/student/logout', [StudentController::class, 'logout'])->name('stude
 Route::get('/student/home', [StudentController::class, 'home'])->name('student_home')->middleware('student:student'); // Homepage view
 
 Route::get('/student/profile', [StudentController::class, 'profile'])->name('student_profile')->middleware('student:student'); // Profile view
+Route::get('/student/edit-profile/{id}', [StudentController::class, 'edit_profile'])->name('student_edit_profile')->middleware('student:student'); // Edit Profile view
+Route::post('/student/edit-profile-submit/{id}', [StudentController::class, 'edit_profile_submit'])->name('student_edit_profile_submit')->middleware('student:student'); // Edit Profile submit
+
 
 Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name('student_dashboard')->middleware('student:student'); // Dashboard view
 

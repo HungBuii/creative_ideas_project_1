@@ -59,6 +59,47 @@ class StudentController extends Controller
         return view('student.Website.profile');
     }
 
+    // Edit Profile
+    public function edit_profile($id)
+    {
+        $single_student = Student::where('id', $id)->first();
+        return view('student.Website.edit_profile', compact('single_student'));
+    }
+
+    // Edit profile submit
+    public function edit_profile_submit(Request $request, $id)
+    {
+        $single_student = Student::where('id', $id)->first();
+
+        $request->validate([
+            'email' => 'email:rfc,dns',
+        ]);
+        
+        if ($request->hasFile('photo')) 
+        {
+            $request->validate([
+                'photo' => 'image|mimes:jpg,jpeg,png,gif',
+            ]);
+
+            if (file_exists(public_path('/storage/uploads/' . $single_student->photo)) and (!empty($single_student->photo))) 
+            {
+                unlink(public_path('/storage/uploads/' . $single_student->photo));
+            }
+
+            $ext = $request->file('photo')->extension();
+            $photo_name = time() . '.' . $ext;
+
+            $request->file('photo')->move(public_path('/storage/uploads/'), $photo_name);
+            $single_student->photo = $photo_name;
+        }
+
+        $single_student->name = $request->name;
+        $single_student->email = $request->email;
+        $single_student->update();
+        return redirect()->route('student_edit_profile', $single_student->id)->with('success', 'Update information profile successfully!');
+    }
+
+
     // Dashboard
     public function dashboard()
     {

@@ -32,7 +32,8 @@
                         <h2>{{ Auth::guard('student')->user()->name }}</h2>
                         <span class="profile-info-label">Email : {{ Auth::guard('student')->user()->email }}</span>
                         <span class="profile-info-label">Role : {{ Auth::guard('student')->user()->role }}</span>
-                        <span class="profile-info-label">Joined : {{ Auth::guard('student')->user()->created_at }} </span>
+                        <span class="profile-info-label">Joined : {{ Auth::guard('student')->user()->created_at }}
+                        </span>
                     </div>
                 </div>
             </div>
@@ -40,6 +41,11 @@
         </div>
 
         <div style="margin-left: 35%;margin-top: 2%;">
+            <a href="{{ route('student_edit_profile', Auth::guard('student')->user()->id) }}">
+                <button type="button"
+                    class="btn btn-info"><i class="feather mr-2 icon-edit"></i>Edit
+                </button>
+            </a>
             <a href="#!">
                 <button type="button" class="btn btn-secondary"><i class="feather mr-2 icon-home"></i>Back to Homepage
                 </button>
