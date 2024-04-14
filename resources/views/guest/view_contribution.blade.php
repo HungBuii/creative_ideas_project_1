@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <iframe height="600" width="1000" src="{{ asset('/storage/files/' . $single_idea->student->name . '.pdf') }}" frameborder="0"></iframe>
+        <iframe height="600" width="1000" src="{{ asset('/storage/files/' . $single_idea->file) }}" frameborder="0"></iframe>
         {{-- <iframe src="{{ $url }}" width="600" height="400"></iframe> --}}
 
     </div>
