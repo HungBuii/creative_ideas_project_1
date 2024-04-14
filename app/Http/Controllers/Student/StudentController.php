@@ -134,11 +134,11 @@ class StudentController extends Controller
         $file = $request->file;
         $filename = $student->name . '.' . $file->getClientOriginalExtension();
         // $filename = Str::slug($file->getClientOriginalName());
-        $request->file->move(public_path('/storage/pdf/'), $filename); 
+        $request->file->move(public_path('/storage/files/'), $filename); 
 
         // $filename_temp = $student->name . '.' . 'pdf';
         // $request->file->move(public_path('/storage/pdf/'), $filename_temp);
-        
+
         $new_idea = new Idea();
         $new_idea->topic = $request->topic;
         $new_idea->tag = $request->tag;
