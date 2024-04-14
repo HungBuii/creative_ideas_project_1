@@ -40,6 +40,11 @@
         </div>
 
         <div style="margin-left: 35%;margin-top: 2%;">
+            <a href="{{ route('coordinator_edit_profile', Auth::guard('coordinator')->user()->id) }}">
+                <button type="button"
+                    class="btn btn-info"><i class="feather mr-2 icon-edit"></i>Edit
+                </button>
+            </a>
             <a href="{{ route('coordinator_home') }}">
                 <button type="button" class="btn btn-secondary"><i class="feather mr-2 icon-home"></i>Back to Homepage
                 </button>

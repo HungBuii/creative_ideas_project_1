@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Idea;
 use App\Models\Admin;
+use App\Models\Comment;
 use App\Models\Faculty;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -86,10 +87,18 @@ class AdminController extends Controller
     // Dashboard view
     public function dashboard()
     {
-        $managers = MarketingManager::count();
-        $coordinators = MarketingCoordinator::count();
-        $students = Student::count();
-        return view('admin.Website.dashboard', compact('managers', 'coordinators', 'students'));
+        $num_managers = MarketingManager::count();
+        $num_coordinators = MarketingCoordinator::count();
+        $num_students = Student::count();
+        $num_ideas = Idea::count();
+        $num_faculties = Faculty::count();
+        $num_ideasStatus = Idea::where('status', 1)->count();
+        $num_comments = Comment::count();
+
+        $faculties = Faculty::get();
+        return view('admin.Website.dashboard', compact('num_managers', 'num_coordinators', 'num_students', 
+                                                    'num_ideas', 'num_faculties', 'num_ideasStatus', 
+                                                    'num_comments', 'faculties'));
     }
 
     /* ----------------------------------------------*/

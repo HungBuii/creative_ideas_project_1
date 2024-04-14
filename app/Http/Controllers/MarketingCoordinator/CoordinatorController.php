@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\MarketingCoordinator;
 
 use App\Models\Comment;
+use App\Models\MarketingCoordinator;
 use ZipArchive;
 use App\Models\Idea;
 use App\Models\Faculty;
@@ -58,6 +59,46 @@ class CoordinatorController extends Controller
     public function profile()
     {
         return view('coordinator.Website.profile');
+    }
+
+    // Edit Profile view
+    public function edit_profile($id)
+    {
+        $single_coordinator = MarketingCoordinator::where('id', $id)->first();
+        return view('coordinator.Website.edit_profile', compact('single_coordinator'));
+    }
+
+    // Edit profile submit
+    public function edit_profile_submit(Request $request, $id)
+    {
+        $single_coordinator = MarketingCoordinator::where('id', $id)->first();
+
+        $request->validate([
+            'email' => 'email:rfc,dns',
+        ]);
+        
+        if ($request->hasFile('photo')) 
+        {
+            $request->validate([
+                'photo' => 'image|mimes:jpg,jpeg,png,gif',
+            ]);
+
+            if (file_exists(public_path('/storage/uploads/' . $single_coordinator->photo)) and (!empty($single_coordinator->photo))) 
+            {
+                unlink(public_path('/storage/uploads/' . $single_coordinator->photo));
+            }
+
+            $ext = $request->file('photo')->extension();
+            $photo_name = time() . '.' . $ext;
+
+            $request->file('photo')->move(public_path('/storage/uploads/'), $photo_name);
+            $single_coordinator->photo = $photo_name;
+        }
+
+        $single_coordinator->name = $request->name;
+        $single_coordinator->email = $request->email;
+        $single_coordinator->update();
+        return redirect()->route('coordinator_edit_profile', $single_coordinator->id)->with('success', 'Update information profile successfully!');
     }
 
     // List faculties view

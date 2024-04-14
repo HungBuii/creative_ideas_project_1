@@ -74,6 +74,8 @@ Route::post('/manager/login-submit', [ManagerController::class, 'login_submit'])
 Route::get('/manager/home', [ManagerController::class, 'home'])->name('manager_home')->middleware('manager:manager'); // Homepage view
 
 Route::get('/manager/profile', [ManagerController::class, 'profile'])->name('manager_profile')->middleware('manager:manager'); // Profile view
+Route::get('/manager/edit-profile/{id}', [ManagerController::class, 'edit_profile'])->name('manager_edit_profile')->middleware('manager:manager'); // Edit Profile view
+Route::post('/manager/edit-profile-submit/{id}', [ManagerController::class, 'edit_profile_submit'])->name('manager_edit_profile_submit')->middleware('manager:manager'); // Edit Profile submit
 
 Route::get('/manager/logout', [ManagerController::class, 'logout'])->name('manager_logout'); // Logout 
 
@@ -95,6 +97,9 @@ Route::get('/coordinator/logout', [CoordinatorController::class, 'logout'])->nam
 Route::get('/coordinator/home', [CoordinatorController::class, 'home'])->name('coordinator_home')->middleware('coordinator:coordinator'); // Homepage view
 
 Route::get('/coordinator/profile', [CoordinatorController::class, 'profile'])->name('coordinator_profile')->middleware('coordinator:coordinator'); // Profile view
+
+Route::get('/coordinator/edit-profile/{id}', [CoordinatorController::class, 'edit_profile'])->name('coordinator_edit_profile')->middleware('coordinator:coordinator'); // Edit Profile view
+Route::post('/coordinator/edit-profile-submit/{id}', [CoordinatorController::class, 'edit_profile_submit'])->name('coordinator_edit_profile_submit')->middleware('coordinator:coordinator'); // Edit Profile submit
 
 Route::get('/coordinator/list-faculties', [CoordinatorController::class, 'list_faculties'])->name('coordinator_faculties')->middleware('coordinator:coordinator'); // List faculties view
 
@@ -121,6 +126,7 @@ Route::get('/student/logout', [StudentController::class, 'logout'])->name('stude
 Route::get('/student/home', [StudentController::class, 'home'])->name('student_home')->middleware('student:student'); // Homepage view
 
 Route::get('/student/profile', [StudentController::class, 'profile'])->name('student_profile')->middleware('student:student'); // Profile view
+
 Route::get('/student/edit-profile/{id}', [StudentController::class, 'edit_profile'])->name('student_edit_profile')->middleware('student:student'); // Edit Profile view
 Route::post('/student/edit-profile-submit/{id}', [StudentController::class, 'edit_profile_submit'])->name('student_edit_profile_submit')->middleware('student:student'); // Edit Profile submit
 

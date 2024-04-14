@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\MarketingManager;
 
+use App\Models\Comment;
 use ZipArchive;
 use App\Models\Idea;
 use App\Models\Faculty;
@@ -53,6 +54,46 @@ class ManagerController extends Controller
         return view('manager.Website.profile');
     }
 
+    // Edit Profile view
+    public function edit_profile($id)
+    {
+        $single_manager = MarketingManager::where('id', $id)->first();
+        return view('manager.Website.edit_profile', compact('single_manager'));
+    }
+
+    // Edit profile submit
+    public function edit_profile_submit(Request $request, $id)
+    {
+        $single_manager = MarketingManager::where('id', $id)->first();
+
+        $request->validate([
+            'email' => 'email:rfc,dns',
+        ]);
+        
+        if ($request->hasFile('photo')) 
+        {
+            $request->validate([
+                'photo' => 'image|mimes:jpg,jpeg,png,gif',
+            ]);
+
+            if (file_exists(public_path('/storage/uploads/' . $single_manager->photo)) and (!empty($single_manager->photo))) 
+            {
+                unlink(public_path('/storage/uploads/' . $single_manager->photo));
+            }
+
+            $ext = $request->file('photo')->extension();
+            $photo_name = time() . '.' . $ext;
+
+            $request->file('photo')->move(public_path('/storage/uploads/'), $photo_name);
+            $single_manager->photo = $photo_name;
+        }
+
+        $single_manager->name = $request->name;
+        $single_manager->email = $request->email;
+        $single_manager->update();
+        return redirect()->route('manager_edit_profile', $single_manager->id)->with('success', 'Update information profile successfully!');
+    }
+
     // Logout
     public function logout()
     {
@@ -63,10 +104,19 @@ class ManagerController extends Controller
     // Dashboard view
     public function dashboard()
     {
-        $managers = MarketingManager::count();
-        $coordinators = MarketingCoordinator::count();
-        $students = Student::count();
-        return view('manager.Website.dashboard', compact('managers', 'coordinators', 'students'));
+        $num_managers = MarketingManager::count();
+        $num_coordinators = MarketingCoordinator::count();
+        $num_students = Student::count();
+        $num_ideas = Idea::count();
+        $num_faculties = Faculty::count();
+        $num_ideasStatus = Idea::where('status', 1)->count();
+        $num_comments = Comment::count();
+        
+
+        $faculties = Faculty::get();
+        return view('manager.Website.dashboard', compact('num_managers', 'num_coordinators', 'num_students', 
+                                                        'num_ideas', 'num_faculties', 'num_ideasStatus', 
+                                                        'num_comments', 'faculties'));
     }
 
     // List faculties

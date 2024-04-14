@@ -32,7 +32,7 @@
                                     <i class="icon feather icon-eye text-c-green mb-1 d-block"></i>
                                 </div>
                                 <div class="col-sm-4 text-md-center">
-                                    <h5>{{ $students }}</h5>
+                                    <h5>{{ $num_students }}</h5>
                                     <span>Students</span>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                                     <i class="icon feather icon-file-text text-c-blue mb-1 d-block"></i>
                                 </div>
                                 <div class="col-sm-8 text-md-center">
-                                    <h5>2000 +</h5>
+                                    <h5>{{ $num_ideas }}+</h5>
                                     <span>Files uploaded</span>
                                 </div>
                             </div>
@@ -56,8 +56,8 @@
                                     <i class="icon feather icon-mail text-c-yellow mb-1 d-block"></i>
                                 </div>
                                 <div class="col-sm-8 text-md-center">
-                                    <h5>200</h5>
-                                    <span>Total Courses</span>
+                                    <h5>{{ $num_faculties }}</h5>
+                                    <span>Total Faculties</span>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                                     <i class="icon feather icon-share-2 text-c-blue mb-1 d-block"></i>
                                 </div>
                                 <div class="col-sm-5 text-md-center">
-                                    <h5>{{ $managers }}</h5>
+                                    <h5>{{ $num_managers }}</h5>
                                     <span>Marketing Managers</span>
                                 </div>
                             </div>
@@ -88,8 +88,8 @@
                                     <i class="icon feather icon-file-text text-c-blue mb-1 d-block"></i>
                                 </div>
                                 <div class="col-sm-4 text-md-center" style="text-align: center">
-                                    <h5>15</h5>
-                                    <span>Post Approved</span>
+                                    <h5>{{ $num_ideasStatus }}</h5>
+                                    <span>Contributions Approved</span>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                                     <i class="icon feather icon-eye text-c-green mb-1 d-block"></i>
                                 </div>
                                 <div class="col-sm-4 text-md-center">
-                                    <h5>{{ $coordinators }}</h5>
+                                    <h5>{{ $num_coordinators }}</h5>
                                     <span>Coordinator</span>
                                 </div>
                             </div>
@@ -119,7 +119,7 @@
                                     <i class="icon feather icon-file-text text-c-blue mb-1 d-block"></i>
                                 </div>
                                 <div class="col-sm-8 text-md-center">
-                                    <h5>2000 +</h5>
+                                    <h5>{{ $num_comments }} +</h5>
                                     <span>Files Comment</span>
                                 </div>
                             </div>
@@ -172,21 +172,27 @@
                                     <tr>
                                         <th>Faculty</th>
                                         <th>Coordinator Assigned</th>
-                                        <th>Due Date</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($faculties as $faculty)
                                     <tr>
+                                        
                                         <td>
                                             <div class="d-inline-block align-middle">
                                                 <div class="d-inline-block">
-                                                    <h6>Describe a person</h6>
+                                                    <h6>{{ $faculty->name }}</h6>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>John Doe</td>
-                                        <td>March, 21st</td>
+                                        <td>{{ $faculty->coordinator->name }}</td>
+                                        <td>{{ $faculty->created_at }}</td>
+                                        <td>{{ $faculty->updated_at }}</td>
+                                       
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -204,12 +210,12 @@
                             </div>
                             <div class="row p-b-30">
                                 <div class="col-auto text-right update-meta">
-                                    <p class="text-muted m-b-0 d-inline-flex">4 hrs ago</p>
+                                    <p class="text-muted m-b-0 d-inline-flex">...</p>
                                     <i class="feather icon-briefcase bg-c-red update-icon"></i>
                                 </div>
                                 <div class="col">
                                     <a href="#!">
-                                        <h6>+ 2 Ideas were added</h6>
+                                        <h6>+ {{ $num_ideas }} Contributions were added</h6>
                                     </a>
                                 </div>
                             </div>
