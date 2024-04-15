@@ -4,6 +4,7 @@ namespace App\Http\Controllers\MarketingCoordinator;
 
 use App\Models\Comment;
 use App\Models\MarketingCoordinator;
+use Carbon\Carbon;
 use ZipArchive;
 use App\Models\Idea;
 use App\Models\Faculty;
@@ -112,7 +113,20 @@ class CoordinatorController extends Controller
     public function list_ideas($id)
     {
         $single_faculty = Faculty::where('id', $id)->first();
-        return view('coordinator.Website.list_ideas', compact('single_faculty'));
+
+        $carbonDate = Carbon::parse($single_faculty->date_end);
+        $closing_comment = $carbonDate->addDays(14);
+        $now = date('Y-m-d');
+        if ($closing_comment >= $now)
+        {
+            $temp = true;
+        }
+        else 
+        {
+            $temp = false;
+        }
+
+        return view('coordinator.Website.list_ideas', compact('single_faculty', 'temp'));
     }
 
     // Download file (Docx, image)
@@ -158,7 +172,8 @@ class CoordinatorController extends Controller
         $current_idea = Idea::where('id', $id)->first();
         $check_comment = Comment::where('idea_id', $id)->first();
 
-        if ($current_idea) {
+        if ($current_idea) 
+        {
             if ($check_comment)
             {
                 $check_comment->content = $request->content;

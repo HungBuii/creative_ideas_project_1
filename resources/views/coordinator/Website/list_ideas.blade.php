@@ -108,8 +108,18 @@
                                 
                                 <br><br>
 
-                                <p><a class="btn mb-1 btn-primary" data-toggle="collapse" href="#multiCollapseExample1">
-                                        <i class="feather mr-2 icon-message-square"></i>Comment</a>
+                                <p>
+                                    @if ($temp)
+                                        <a class="btn mb-1 btn-primary" data-toggle="collapse" href="#multiCollapseExample1">
+                                            <i class="feather mr-2 icon-message-square"></i>Comment
+                                        </a>
+                                    @else
+                                        <p>Can not comment</p>
+                                    @endif
+                                    {{-- <a class="btn mb-1 btn-primary" data-toggle="collapse" href="#multiCollapseExample1">
+                                        <i class="feather mr-2 icon-message-square"></i>Comment
+                                    </a> --}}
+                                    
                                 <div class="collapse multi-collapse mt-2" id="multiCollapseExample1">
                                     <div class="card">
                                         <form action="{{ route('coordinator_comment_submit', $item->id) }}"
