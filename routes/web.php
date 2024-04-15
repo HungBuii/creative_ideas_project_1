@@ -65,8 +65,9 @@ Route::get('/admin/delete-faculty/{id}', [AdminController::class, 'delete_facult
 
 Route::get('/admin/faculty/{id}/list-ideas', [AdminController::class, 'list_ideas'])->name('admin_ideas')->middleware('admin:admin'); // List ideas view
 
-
 Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin_profile')->middleware('admin:admin'); // Profile view
+
+Route::get('/admin/faculty/{id}/download', [AdminController::class, 'download_file'])->name('admin_download_file')->middleware('admin:admin'); // Download file
 
 
 /* Marketing Manager */

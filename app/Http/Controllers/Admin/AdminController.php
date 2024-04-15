@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use ZipArchive;
 use App\Models\Idea;
 use App\Models\Admin;
 use App\Models\Comment;
@@ -557,4 +558,25 @@ class AdminController extends Controller
 
     /* ----------------------------------------------*/
 
+    // Download file (Zip)
+    public function download_file($id)
+    {
+        try {
+            $ideas = Idea::where('faculty_id', $id)->get();
+            $faculty = Faculty::where('id', $id)->first();
+
+            $fileName = 'faculty_' . $faculty->name . '.zip';
+            $zip = new ZipArchive();
+            if ($zip->open(public_path('/storage/files/' . $fileName), ZipArchive::CREATE)) {
+                foreach ($ideas as $item) {
+                    $nameInZipFile = basename($item->file);
+                    $zip->addFile(public_path('/storage/files/' . $item->file), $nameInZipFile);
+                }
+            }
+            $zip->close();
+            return response()->download(public_path('/storage/files/' . $fileName));
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
 }
