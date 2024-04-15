@@ -59,11 +59,11 @@
                                     <div class="custom-file">
                                         <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                         <input type="file" class="custom-file-input" name="photo" id="inputGroupFile01">
-                                        @error('photo')
-                                        <div class="text-danger">{{ $message }}</div>
-                                        @enderror
                                     </div>
                                 </div>
+                                @error('photo')
+                                        <div class="text-danger">{{ $message }}</div>
+                                @enderror
                                 <button type="submit" class="btn btn-primary">Submit</button>
 
                         </div>
