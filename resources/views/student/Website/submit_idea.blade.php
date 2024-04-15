@@ -199,7 +199,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            
+                                            @isset ($check_deadline)
+                                                <p>Can not update</p>
+                                            @else
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            @endisset
+                                            
                                         </div>
                                     </div>
                                 {{-- </div> --}}

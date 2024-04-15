@@ -115,7 +115,17 @@ class StudentController extends Controller
     public function current_faculty($id)
     {
         $single_faculty = Faculty::where('id', $id)->first();
-        return view('student.Website.submit_idea', compact('single_faculty'));
+        $now = date('Y-m-d');
+        $check_deadline = Faculty::where('id', $single_faculty->id)->whereDate('date_end', '<=', $now)->first();
+        
+        if ($check_deadline) {
+            return view('student.Website.submit_idea', compact('single_faculty', 'check_deadline'));
+        }
+        else 
+        {
+            return view('student.Website.submit_idea', compact('single_faculty'));
+        }
+        
     }
 
     // Submit idea 
@@ -134,7 +144,7 @@ class StudentController extends Controller
         $file = $request->file;
         $filename = $student->name . '.' . $file->getClientOriginalExtension();
         // $filename = Str::slug($file->getClientOriginalName());
-        $request->file->move(public_path('/storage/files/'), $filename); 
+        $request->file->move(public_path('/storage/files/'), $filename);
 
         // $filename_temp = $student->name . '.' . 'pdf';
         // $request->file->move(public_path('/storage/pdf/'), $filename_temp);
@@ -149,6 +159,8 @@ class StudentController extends Controller
         $new_idea->save();
 
         return redirect()->route('student_edit_submit_idea_view', $single_faculty->id)->with('success', 'Add new successful ideas!');
+
+
         // return redirect()->back()->with('success', 'Add new successful ideas!');
     }
 
@@ -164,7 +176,19 @@ class StudentController extends Controller
         $single_faculty = Faculty::where('id', $id)->first();
         $current_student = Student::where('id', Auth::guard('student')->user()->id)->first();
         $current_contribution = Idea::where('faculty_id', $id)->first();
-        return view('student.Website.edit_submit_idea', compact('single_faculty', 'current_student', 'current_contribution'));
+
+        $now = date('Y-m-d');
+        $check_deadline = Faculty::where('id', $single_faculty->id)->whereDate('date_end', '<=', $now)->first();
+
+        return view(
+            'student.Website.edit_submit_idea',
+            compact(
+                'single_faculty',
+                'current_student',
+                'current_contribution',
+                'check_deadline'
+            )
+        );
     }
 
     // Submit edit idea

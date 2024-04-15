@@ -105,11 +105,18 @@
                                         </tr>
                                         <tr>
                                             <td class="table-active">File submissions</td>
-                                            <th><a
-                                                    href="{{ route('student_download_file', Auth::guard('student')->user()->idea->file) }}"><i
-                                                        class="feather mr-2 icon-file"></i>{{
-                                                    Auth::guard('student')->user()->idea->file }}</a>
+                                            <th>
+                                                @if ($check_deadline)
+                                                    <p>Can not update</p>
+                                                @else
+                                                <a href="{{ route('student_download_file', Auth::guard('student')->user()->idea->file) }}"><i
+                                                    class="feather mr-2 icon-file"></i>{{ Auth::guard('student')->user()->idea->file }}
+                                                </a>
+                                                @endif
+                                                
+
                                                 <br>
+
                                                 <img src="https://media.istockphoto.com/id/1410046653/vector/cute-school-kids-around-chalkboard-happy-children-with-empty-blackboard-banner-with-adorable.jpg?s=1024x1024&w=is&k=20&c=Tt-ykpYpAv-JrCfyeNIrV0cpR7ife87gdhF838M9wRY="
                                                     style="max-width: 257px; max-height: 257px; margin-left: 220px"
                                                     class="profile-picture" alt="User-Image">
@@ -123,10 +130,19 @@
                         <!-- End of Table -->
 
                         <!-- Edit -->
+                        @if ($check_deadline)
+                        <p>Can not update</p>
+                        @else
                         <button type="button" class="btn btn-warning" data-toggle="modal"
                             data-target=".bd-example-modal-lg" style="margin-left: 50%"><i
                                 class="feather mr-2 icon-edit"></i>Edit Idea
                         </button>
+                        @endif
+
+                        {{-- <button type="button" class="btn btn-warning" data-toggle="modal"
+                            data-target=".bd-example-modal-lg" style="margin-left: 50%"><i
+                                class="feather mr-2 icon-edit"></i>Edit Idea
+                        </button> --}}
 
                         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
                             aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -135,12 +151,12 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title h4" id="myLargeModalLabel">Edit Idea</h5>
                                         <button type="button" class="close" data-dismiss="modal"
-                                            aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            aria-label="Close"><span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
                                     <div class="modal-body">
                                         <div class="card">
-                                            <form
-                                                action="{{ route('student_edit_submit_idea', Auth::guard('student')->user()->idea->id) }}"
+                                            <form action="{{ route('student_edit_submit_idea', Auth::guard('student')->user()->idea->id) }}"
                                                 method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <input type="hidden" name="student_id"
