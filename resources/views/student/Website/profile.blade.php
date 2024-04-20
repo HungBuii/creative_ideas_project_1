@@ -46,7 +46,7 @@
                     class="btn btn-info"><i class="feather mr-2 icon-edit"></i>Edit
                 </button>
             </a>
-            <a href="#!">
+            <a href="{{ route('student_home') }}">
                 <button type="button" class="btn btn-secondary"><i class="feather mr-2 icon-home"></i>Back to Homepage
                 </button>
             </a>
