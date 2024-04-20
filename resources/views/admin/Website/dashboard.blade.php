@@ -161,8 +161,7 @@
                                                     class="feather icon-minus"></i> collapse</span><span
                                                 style="display:none"><i class="feather icon-plus"></i> expand</span></a>
                                     </li>
-                                    <li class="dropdown-item reload-card"><a href="#!"><i
-                                                class="feather icon-refresh-cw"></i> reload</a></li>
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -173,9 +172,12 @@
                                 <thead>
                                     <tr>
                                         <th>Faculty</th>
-                                        <th>Coordinator Assigned</th>
+                                        <th style="text-align: center">Coordinator Assigned</th>
                                         <th>Start Date</th>
                                         <th>End Date</th>
+                                        <th style="text-align: center">Number Students</th>
+                                        <th style="text-align: center">Number Contributions</th>
+                                        <th style="text-align: center">Contribution percentage</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -189,10 +191,16 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>{{ $faculty->coordinator->name }}</td>
-                                        <td>{{ $faculty->created_at }}</td>
-                                        <td>{{ $faculty->updated_at }}</td>
-                                       
+                                        <td style="text-align: center">{{ $faculty->coordinator->name }}</td>
+                                        <td>{{ $faculty->date_start }}</td>
+                                        <td>{{ $faculty->date_end }}</td>
+                                        @php    
+                                            $temp1 = App\Models\Student::where('faculty_id', $faculty->id)->count();
+                                            $temp2 = App\Models\Idea::where('faculty_id', $faculty->id)->count();
+                                        @endphp
+                                        <td style="text-align: center">{{ $temp1 }}</td>
+                                        <td style="text-align: center">{{ $temp2 }}</td>
+                                        <td style="text-align: center">{{ ($temp2 / $num_ideas) * 100 }}%</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

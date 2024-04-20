@@ -94,6 +94,8 @@ Route::get('/manager/faculty/{id}/list-ideas', [ManagerController::class, 'list_
 
 Route::get('/manager/faculty/{id}/download', [ManagerController::class, 'download_file'])->name('manager_download_file')->middleware('manager:manager'); // Download file
 
+Route::get('/manager/list-outstanding-contributions', [ManagerController::class, 'list_outstanding_contributions'])->name('manager_list_outstanding_contributions')->middleware('manager:manager'); // List outstanding contributions
+
 
 /* Marketing Coordinator */
 Route::get('/coordinator/login', [CoordinatorController::class, 'login_view'])->name('coordinator_login'); // login

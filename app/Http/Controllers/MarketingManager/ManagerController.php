@@ -154,4 +154,11 @@ class ManagerController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
+
+    // List outstanding ideas view
+    public function list_outstanding_contributions()
+    {
+        $contributions = Idea::where('status', 1)->get();
+        return view('manager.Website.list_outstanding_contributions', compact('contributions'));
+    }
 }

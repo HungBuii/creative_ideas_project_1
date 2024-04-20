@@ -27,7 +27,7 @@
                     <a href="#" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">System Management</span></a>
                     <ul class="pcoded-submenu">
                         <li><a href="{{ route('manager_faculties') }}" target="">Faculties</a></li>
-                        <li><a href="" target="">Outstanding Contributions</a></li>
+                        <li><a href="{{ route('manager_list_outstanding_contributions') }}" target="">Outstanding Contributions</a></li>
                     </ul>
                 </li>
             </ul>
