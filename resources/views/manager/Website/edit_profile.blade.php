@@ -67,7 +67,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Role</label>
-                                        <input type="role" class="form-control" value="Marketing Manager" readonly>
+                                        <input type="role" class="form-control" value="Marketing Manager" readonly style="cursor: not-allowed! important;">
                                     </div>
                                     <label>Photo</label>
                                     <div class="input-group mb-3">
