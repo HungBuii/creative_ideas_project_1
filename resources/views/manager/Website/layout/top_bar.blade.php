@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
             <li>
-                <div class="dropdown">
+                {{-- <div class="dropdown">
                     <a class="dropdown-toggle" href="#" data-toggle="dropdown">
                         <i class="icon feather icon-bell"></i>
                         <span class="badge badge-pill badge-danger">5</span>
@@ -42,7 +42,7 @@
                             <a href="#!">show all</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </li>
             <li>
                 <div class="dropdown drp-user">

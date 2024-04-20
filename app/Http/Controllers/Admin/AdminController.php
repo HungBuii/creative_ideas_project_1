@@ -75,6 +75,39 @@ class AdminController extends Controller
         return view('admin.Website.profile');
     }
 
+    // Edit Profile view
+    public function edit_profile($id)
+    {
+        $single_admin = Admin::where('id', $id)->first();
+        return view('admin.Website.edit_profile', compact('single_admin'));
+    }
+
+    // Edit profile submit
+    public function edit_profile_submit(Request $request, $id)
+    {
+        $single_admin = Admin::where('id', $id)->first();
+        
+        if ($request->hasFile('photo')) 
+        {
+            $request->validate([
+                'photo' => 'image|mimes:jpg,jpeg,png,gif',
+            ]);
+
+            if (file_exists(public_path('/storage/uploads/' . $single_admin->photo)) and (!empty($single_admin->photo))) 
+            {
+                unlink(public_path('/storage/uploads/' . $single_admin->photo));
+            }
+
+            $ext = $request->file('photo')->extension();
+            $photo_name = 'admin' . '.' . $ext;
+
+            $request->file('photo')->move(public_path('/storage/uploads/'), $photo_name);
+            $single_admin->photo = $photo_name;
+        }
+        $single_admin->update();
+        return redirect()->route('admin_edit_profile', $single_admin->id)->with('success', 'Update information profile successfully!');
+    }
+
     /* ----------------------------------------------*/
 
     // Homepage view
@@ -552,9 +585,27 @@ class AdminController extends Controller
     public function list_ideas($id)
     {
         $single_faculty = Faculty::where('id', $id)->first();
+
         return view('admin.Website.list_ideas', compact('single_faculty'));
     }
 
+    // Remove idea
+    public function remove_idea($id)
+    {
+        $current_idea = Idea::where('id', $id)->first();
+        if ($current_idea)
+        {
+            $comment = Comment::where('idea_id', $id)->first();
+            if($comment)
+            {
+                $comment->delete();
+                $current_idea->delete();
+                return redirect()->back()->with('success', 'Delete this idea successfully!');
+            }
+            $current_idea->delete();
+        }
+        return redirect()->back()->with('success', 'Delete this idea successfully!');
+    }
 
     /* ----------------------------------------------*/
 

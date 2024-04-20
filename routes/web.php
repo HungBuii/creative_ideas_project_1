@@ -65,7 +65,11 @@ Route::get('/admin/delete-faculty/{id}', [AdminController::class, 'delete_facult
 
 Route::get('/admin/faculty/{id}/list-ideas', [AdminController::class, 'list_ideas'])->name('admin_ideas')->middleware('admin:admin'); // List ideas view
 
+Route::get('/admin/remove-idea/{id}', [AdminController::class, 'remove_idea'])->name('admin_remove_idea')->middleware('admin:admin'); // Remove idea
+
 Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin_profile')->middleware('admin:admin'); // Profile view
+Route::get('/admin/edit-profile/{id}', [AdminController::class, 'edit_profile'])->name('admin_edit_profile')->middleware('admin:admin'); // Edit Profile view
+Route::post('/admin/edit-profile-submit/{id}', [AdminController::class, 'edit_profile_submit'])->name('admin_edit_profile_submit')->middleware('admin:admin'); // Edit Profile submit
 
 Route::get('/admin/faculty/{id}/download', [AdminController::class, 'download_file'])->name('admin_download_file')->middleware('admin:admin'); // Download file
 

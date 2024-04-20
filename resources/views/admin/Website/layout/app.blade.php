@@ -19,19 +19,11 @@
 
     <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/student.css') }}" >
-
+    <link rel="stylesheet" href="{{ asset('css/iziToast.min.css') }}">
 
 </head>
 
 <body class="">
-
-    @if (session()->get('success'))
-    <div class="text-success">{{ session()->get('success') }}</div>
-    @endif
-
-    @if (session()->get('error'))
-    <div class="text-danger">{{ session()->get('error') }}</div>
-    @endif
 
     @include('admin.Website.layout.top_bar')
 
@@ -40,6 +32,38 @@
     @yield('main_content')
 
     @include('admin.Website.layout.scripts')
+
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        <script>
+            iziToast.error({
+                title: '',
+                position: 'topRight',
+                message: '{{ $error }}',
+            });
+        </script>
+        @endforeach
+    @endif
+
+    @if (session()->get('error'))
+    <script>
+        iziToast.success({
+            title: '',
+            position: 'topRight',
+            message: '{{ session()->get('error') }}',
+        });
+    </script>
+    @endif
+
+    @if (session()->get('success'))
+    <script>
+        iziToast.success({
+            title: '',
+            position: 'topRight',
+            message: '{{ session()->get('success') }}',
+        });
+    </script>
+    @endif
 
 </body>
 

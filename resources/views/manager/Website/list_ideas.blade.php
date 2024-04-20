@@ -31,7 +31,7 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
-                    <a href="#!">
+                    <a href="{{ route('manager_faculties') }}">
                         <button class="btn btn-primary">Back to Faculity</button></a>
                     <hr>
                     <div class="row">

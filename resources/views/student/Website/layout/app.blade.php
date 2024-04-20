@@ -18,18 +18,11 @@
     <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}" >
 
     <link rel="stylesheet" href="{{ asset('css/ace.min.css') }}" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="{{ asset('css/iziToast.min.css') }}">
 
 </head>
 
 <body class="">
-
-    @if (session()->get('success'))
-    <div class="text-success">{{ session()->get('success') }}</div>
-    @endif
-
-    @if (session()->get('error'))
-    <div class="text-danger">{{ session()->get('error') }}</div>
-    @endif
 
     @include('student.Website.layout.top_bar')
 
@@ -38,6 +31,38 @@
     @yield('main_content')
 
     @include('student.Website.layout.scripts')
+
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        <script>
+            iziToast.error({
+                title: '',
+                position: 'topRight',
+                message: '{{ $error }}',
+            });
+        </script>
+        @endforeach
+    @endif
+
+    @if (session()->get('error'))
+    <script>
+        iziToast.success({
+            title: '',
+            position: 'topRight',
+            message: '{{ session()->get('error') }}',
+        });
+    </script>
+    @endif
+
+    @if (session()->get('success'))
+    <script>
+        iziToast.success({
+            title: '',
+            position: 'topRight',
+            message: '{{ session()->get('success') }}',
+        });
+    </script>
+    @endif
 
 </body>
 

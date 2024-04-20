@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
             <li>
-                <div class="dropdown">
+                {{-- <div class="dropdown">
                     <a class="dropdown-toggle" href="#" data-toggle="dropdown">
                         <i class="icon feather icon-bell"></i>
                         <span class="badge badge-pill badge-danger">5</span>
@@ -42,7 +42,7 @@
                             <a href="#!">show all</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </li>
             <li>
                 <div class="dropdown drp-user">
@@ -51,7 +51,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-notification">
                         <div class="pro-head">
-                            <img alt="No image" src="{{ asset('uploads/admin.jpg') }}" class="img-radius">
+                            <img alt="No image" src="{{ asset('storage/uploads/' . Auth::guard('admin')->user()->photo) }}" class="img-radius">
                             <span>{{ Auth::guard('admin')->user()->name }}</span>
                             <a href="{{ route('admin_logout') }}" class="dud-logout" title="Logout">
                                 <i class="feather icon-log-out"></i>

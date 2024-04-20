@@ -26,7 +26,7 @@
         <div class="container">
             <div class="profile-header">
                 <div class="profile-info-wrapper">
-                    <img src="{{ asset('/uploads/admin.jpg') }}"
+                    <img src="{{ asset('/storage/uploads/' . Auth::guard('admin')->user()->photo) }}"
                         style="max-width: 257px; max-height: 257px;" class="profile-picture" alt="User-Image">
                     <div class="profile-info">
                         <h2>{{ Auth::guard('admin')->user()->name }}</h2>
@@ -40,6 +40,11 @@
         </div>
 
         <div style="margin-left: 35%;margin-top: 2%;">
+            <a href="{{ route('admin_edit_profile', Auth::guard('admin')->user()->id) }}">
+                <button type="button"
+                    class="btn btn-info"><i class="feather mr-2 icon-edit"></i>Edit
+                </button>
+            </a>
             <a href="#!">
                 <button type="button" class="btn btn-secondary"><i class="feather mr-2 icon-home"></i>Back to Homepage
                 </button>

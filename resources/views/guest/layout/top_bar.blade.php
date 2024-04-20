@@ -17,25 +17,25 @@
                     <div class="dropdown-menu dropdown-menu-right profile-notification">
                         <ul class="pro-body">
                             <li>
-                                <a href="" class="dropdown-item"><i
+                                <a href="{{ route('admin_login') }}" class="dropdown-item"><i
                                         class="feather icon-user"></i>
                                     As an admin
                                 </a>
                             </li>
                                     <li>
-                                        <a href="" class="dropdown-item"><i
+                                        <a href="{{ route('manager_login') }}" class="dropdown-item"><i
                                         class="feather icon-user"></i>
                                     As a Marketing Manager
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="" class="dropdown-item"><i
+                                        <a href="{{ route('coordinator_login') }}" class="dropdown-item"><i
                                         class="feather icon-user"></i>
                                     As a Marketing Coordinator
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="" class="dropdown-item"><i
+                                        <a href="{{ route('student_login') }}" class="dropdown-item"><i
                                         class="feather icon-user"></i>
                                     As a student
                                         </a>

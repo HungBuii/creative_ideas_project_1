@@ -10,3 +10,5 @@
 <!-- custom-chart js -->
 <script src="{{ asset('js/pages/dashboard-main.js') }}" defer></script>
 
+<!-- iziToast js -->
+<script src="{{ asset('js/iziToast.min.js') }}"></script>
