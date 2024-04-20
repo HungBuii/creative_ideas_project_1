@@ -2,6 +2,8 @@
     <div class="m-header">
         <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
         <a href="#!" class="b-brand">
+            <img src="https://cdn.discordapp.com/attachments/1231277635816914994/1231279628144873502/THT__1_-removebg-preview.png?ex=66366183&is=6623ec83&hm=2f484833ea9bb8a5cee3e5b59a2a3d0a03d833793f754548d1da3f8dac2752eb&" 
+            alt="" class="logo" style="max-width: 180px; max-height:200px ">
         </a>
         <a href="#!" class="mob-toggler">
             <i class="feather icon-more-vertical"></i>
