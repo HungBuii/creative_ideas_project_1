@@ -43,6 +43,7 @@
                             <p><a href="{{ route('admin_login') }}">Admin Login</a></p>
                             <p><a href="{{ route('coordinator_login') }}">Marketing Coordinator Login</a></p>
                             <p><a href="{{ route('student_login') }}">Student Login</a></p>
+                            <p><a href="{{ route('index') }}">Guest Login</a></p>
                         </form>
                     </div>
 

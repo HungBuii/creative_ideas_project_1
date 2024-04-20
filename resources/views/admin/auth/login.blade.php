@@ -48,6 +48,7 @@
                             <p><a href="{{ route('manager_login') }}">Marketing Manager Login</a></p>
                             <p><a href="{{ route('coordinator_login') }}">Marketing Coordinator Login</a></p>
                             <p><a href="{{ route('student_login') }}">Student Login</a></p>
+                            <p><a href="{{ route('index') }}">Guest Login</a></p>
                         </form>
                     </div>
 
