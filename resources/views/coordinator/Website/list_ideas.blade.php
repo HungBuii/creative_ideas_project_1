@@ -113,39 +113,68 @@
                                         <a class="btn mb-1 btn-primary" data-toggle="collapse" href="#multiCollapseExample1">
                                             <i class="feather mr-2 icon-message-square"></i>Comment
                                         </a>
+                                        <div class="collapse multi-collapse mt-2" id="multiCollapseExample1">
+                                            <div class="card">
+                                                <form action="{{ route('coordinator_comment_submit', $item->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            <label>Comment</label>
+                                                            <textarea id="text" class="form-control" rows="4" cols="50"
+                                                                placeholder="Enter Comment" name="content">
+                                                            @isset($item->comment->content)
+                                                            {{ $item->comment->content }}
+                                                            @endisset
+                                                            </textarea>
+                                                        </div>
+                                                        
+                                                        @isset($item->comment->content)
+                                                        <button type="submit" class="btn btn-primary">Update</button>
+                                                        @else
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                        @endisset
+                                    
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
                                     @else
-                                    <button type="button" class="btn  btn-primary" disabled style="cursor: not-allowed! important;"><i class="feather mr-2 icon-message-square"></i>Comment</button>
+                                    <a class="btn mb-1 btn-primary" data-toggle="collapse" href="#multiCollapseExample1">
+                                        <i class="feather mr-2 icon-message-square"></i>Comment
+                                    </a>
+                                    <div class="collapse multi-collapse mt-2" id="multiCollapseExample1">
+                                        <div class="card">
+                                            <form action="{{ route('coordinator_comment_submit', $item->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <label>Comment</label>
+                                                        <textarea id="text" class="form-control" rows="4" cols="50"
+                                                            placeholder="Enter Comment" name="content" disabled style="cursor: not-allowed! important;">
+                                                        @isset($item->comment->content)
+                                                        {{ $item->comment->content }}
+                                                        @endisset
+                                                        </textarea>
+                                                    </div>
+                                                    
+                                                    @isset($item->comment->content)
+                                                    <button type="submit" class="btn btn-primary" disabled style="cursor: not-allowed! important;">Update</button>
+                                                    @else
+                                                    <button type="submit" class="btn btn-primary" disabled style="cursor: not-allowed! important;">Submit</button>
+                                                    @endisset
+                                
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                     @endif
                                     {{-- <a class="btn mb-1 btn-primary" data-toggle="collapse" href="#multiCollapseExample1">
                                         <i class="feather mr-2 icon-message-square"></i>Comment
                                     </a> --}}
                                     
-                                <div class="collapse multi-collapse mt-2" id="multiCollapseExample1">
-                                    <div class="card">
-                                        <form action="{{ route('coordinator_comment_submit', $item->id) }}"
-                                            method="POST">
-                                            @csrf
-                                            <div class="card-body">
-                                                <div class="form-group">
-                                                    <label>Comment</label>
-                                                    <textarea id="text" class="form-control" rows="4" cols="50"
-                                                        placeholder="Enter Comment" name="content">
-                                                    @isset($item->comment->content)
-                                                    {{ $item->comment->content }}
-                                                    @endisset
-                                                    </textarea>
-                                                </div>
-                                                
-                                                @isset($item->comment->content)
-                                                <button type="submit" class="btn btn-primary">Update</button>
-                                                @else
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                                @endisset
-                            
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                                
                                 </p>
                             {{-- </form> --}}
 
