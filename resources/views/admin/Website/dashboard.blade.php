@@ -130,7 +130,9 @@
                                     <i class="icon feather icon-file-text text-c-red mb-1 d-block"></i>
                                 </div>
                                 <div class="col-sm-8 text-md-center">
-                                    <h5>0</h5>
+                                    <h5>
+                                        {{ $num_ideas - $num_comments }}
+                                    </h5>
                                     <span>Missing Comments</span>
                                 </div>
                             </div>

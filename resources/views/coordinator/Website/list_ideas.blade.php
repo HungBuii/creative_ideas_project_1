@@ -114,7 +114,8 @@
                                             <i class="feather mr-2 icon-message-square"></i>Comment
                                         </a>
                                     @else
-                                        <p>Can not comment</p>
+                                        {{-- <p>Can not comment</p> --}}
+                                        <button type="button" class="btn  btn-primary" disabled style="cursor: not-allowed! important;"><i class="feather mr-2 icon-message-square"></i>Can not comment</button>
                                     @endif
                                     {{-- <a class="btn mb-1 btn-primary" data-toggle="collapse" href="#multiCollapseExample1">
                                         <i class="feather mr-2 icon-message-square"></i>Comment

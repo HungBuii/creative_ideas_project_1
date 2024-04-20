@@ -16,7 +16,7 @@ class GuestController extends Controller
     // Homepage
     public function index()
     {
-        $ideas = Idea::where('status', 1)->get();
+        $ideas = Idea::where('status', 1)->paginate(1);
         return view('guest.index', compact('ideas'));
     }
 
