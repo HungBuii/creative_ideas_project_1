@@ -103,7 +103,7 @@
                                 alt="User-Image">
                             <a href="{{ route('admin_remove_idea', $item->id) }}">
                                 <button type="submit" class="btn btn-primary" style="background-color: red">
-                                    Remove this idea!
+                                    Remove this contribution!
                                 </button>
                             </a>
                             <br> <br>

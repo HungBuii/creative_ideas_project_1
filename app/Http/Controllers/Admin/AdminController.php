@@ -509,10 +509,16 @@ class AdminController extends Controller
         $single_faculty->date_end = $request->date_end;
 
         $select_coordinator = $request->input('coordinator');
-        if ($select_coordinator == '...') {
+        if ($select_coordinator == 'Delete this coordinator') {
             $single_faculty->coordinator_id = 0;
             $single_faculty->update();
-        } else {
+        } 
+        else if($select_coordinator == '...')
+        {
+            $single_faculty->update();
+        }
+        else 
+        {
             $coordinator = MarketingCoordinator::where('name', $select_coordinator)->first();
             if ($single_faculty->coordinator_id == $coordinator->id) {
                 $single_faculty->coordinator_id = $coordinator->id;

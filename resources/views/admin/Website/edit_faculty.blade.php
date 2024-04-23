@@ -75,10 +75,11 @@
                             </p>
                             <div class="input-group mb-3">
                                 <select class="custom-select" id="inputGroupSelect01" name="coordinator">
-                                    <option selected>...</option>
+                                    <option selected>Delete this coordinator</option>
                                     @foreach ($coordinators as $coordinator)
                                     <option selected>{{ $coordinator->name }}</option>
                                     @endforeach
+                                    <option selected>...</option>
                                 </select>
                             </div>
                             <!-- Select Students -->
@@ -112,8 +113,9 @@
                                 @foreach ($single_faculty->students as $student)
                                 <option selected>{{ $student->name }}</option>
                                 @endforeach
-                                <option selected>...</option>
                                 @endif
+
+                                <option selected>...</option>
                                 {{-- @foreach ($students as $student)
                                 <option selected>{{ $student->name }}</option>
                                 @endforeach --}}
