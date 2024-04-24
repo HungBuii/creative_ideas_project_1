@@ -214,6 +214,7 @@ class StudentController extends Controller
         $student = Student::where('id', $request->student_id)->first();
         if (file_exists(public_path('/storage/files/' . Auth::guard('student')->user()->idea->file)) and (!empty(Auth::guard('student')->user()->idea->file))) {
             unlink(public_path('/storage/files/' . Auth::guard('student')->user()->idea->file));
+            unlink(public_path('/storage/files/' . $student->name . '.pdf'));
         }
 
         $file = $request->file;
@@ -232,7 +233,7 @@ class StudentController extends Controller
             
             $pdfFilename = $student->name . '.pdf';
 
-            $pdfWriter->save(public_path('/storage/convertPDF/' . $pdfFilename));
+            $pdfWriter->save(public_path('/storage/files/' . $pdfFilename));
 
         }
 
