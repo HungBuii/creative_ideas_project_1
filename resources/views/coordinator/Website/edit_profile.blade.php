@@ -89,10 +89,9 @@
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary" style="margin-left: 10px;">Update</button>
-                                <a href="">
-                                    <button class="btn btn-secondary" style="margin-left: 10px;">Back to
-                                        Profile</button>
-                                </a>
+                                <button class="btn btn-secondary" style="margin-left: 10px; background-color: greenyellow">
+                                    <a href="{{ route('coodinator_profile') }}" style="color: green">Back to Profile</a>
+                                </button>
                             </div>
                         </form>
                     </div>
