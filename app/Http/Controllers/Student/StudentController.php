@@ -157,7 +157,7 @@ class StudentController extends Controller
             
             $pdfFilename = $student->name . '.pdf';
 
-            $pdfWriter->save(public_path('/storage/convertPDF/' . $pdfFilename));
+            $pdfWriter->save(public_path('/storage/files/' . $pdfFilename));
 
         }
 

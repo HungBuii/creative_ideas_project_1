@@ -22,7 +22,7 @@
         </div>
 
         @isset($temp)
-        <iframe height="600" width="1000" src="{{ asset('/storage/convertPDF/' . $temp . '.pdf') }}" frameborder="0"></iframe>
+        <iframe height="600" width="1000" src="{{ asset('/storage/files/' . $temp . '.pdf') }}" frameborder="0"></iframe>
         @else
         <iframe height="600" width="1000" src="{{ asset('/storage/files/' . $single_idea->file) }}" frameborder="0"></iframe>
         @endisset
