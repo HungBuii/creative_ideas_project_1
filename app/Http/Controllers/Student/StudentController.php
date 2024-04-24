@@ -143,11 +143,23 @@ class StudentController extends Controller
 
         $file = $request->file;
         $filename = $student->name . '.' . $file->getClientOriginalExtension();
-        // $filename = Str::slug($file->getClientOriginalName());
         $request->file->move(public_path('/storage/files/'), $filename);
 
-        // $filename_temp = $student->name . '.' . 'pdf';
-        // $request->file->move(public_path('/storage/pdf/'), $filename_temp);
+        if($file->getClientOriginalExtension() == 'docx')
+        {
+            $domPdfPath = base_path('vendor/dompdf/dompdf');
+            \PhpOffice\PhpWord\Settings::setPdfRendererPath($domPdfPath);
+            \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
+
+            $content = \PhpOffice\PhpWord\IOFactory::load(public_path('/storage/files/' . $filename));
+
+            $pdfWriter = \PhpOffice\PhpWord\IOFactory::createWriter($content, 'PDF');
+            
+            $pdfFilename = $student->name . '.pdf';
+
+            $pdfWriter->save(public_path('/storage/convertPDF/' . $pdfFilename));
+
+        }
 
         $new_idea = new Idea();
         $new_idea->topic = $request->topic;
@@ -206,8 +218,23 @@ class StudentController extends Controller
 
         $file = $request->file;
         $filename = $student->name . '.' . $file->getClientOriginalExtension();
-        // $filename = Str::slug($file->getClientOriginalName());
         $request->file->move(public_path('/storage/files/'), $filename);
+
+        if($file->getClientOriginalExtension() == 'docx')
+        {
+            $domPdfPath = base_path('vendor/dompdf/dompdf');
+            \PhpOffice\PhpWord\Settings::setPdfRendererPath($domPdfPath);
+            \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
+
+            $content = \PhpOffice\PhpWord\IOFactory::load(public_path('/storage/files/' . $filename));
+
+            $pdfWriter = \PhpOffice\PhpWord\IOFactory::createWriter($content, 'PDF');
+            
+            $pdfFilename = $student->name . '.pdf';
+
+            $pdfWriter->save(public_path('/storage/convertPDF/' . $pdfFilename));
+
+        }
 
         $single_idea = Idea::where('id', $id)->first();
         $single_idea->topic = $request->topic;

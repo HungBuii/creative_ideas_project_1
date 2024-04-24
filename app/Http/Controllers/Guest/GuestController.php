@@ -24,6 +24,11 @@ class GuestController extends Controller
     public function view_contribution($id)
     {
         $single_idea = Idea::where('id', $id)->first();
+        if ($single_idea->file === $single_idea->student->name . '.docx')
+        {
+            $temp = $single_idea->student->name;
+            return view('guest.view_contribution', compact('temp'));
+        }
         return view('guest.view_contribution', compact('single_idea'));
     }
 }
