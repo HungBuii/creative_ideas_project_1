@@ -15,6 +15,14 @@
                     Guest Page </div>
                     </a>
                 </div>
+                <ul class="nav pcoded-inner-navbar ">
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Navigation</label>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-bar-chart"></i></span><span class="pcoded-mtext">About Us</span></a>
+                    </li>
+                </ul>
             </div>
 
         </div>

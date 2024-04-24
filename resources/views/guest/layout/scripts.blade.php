@@ -9,3 +9,6 @@
 
 <!-- custom-chart js -->
 <script src="{{ asset('js/pages/dashboard-main.js') }}" defer></script>
+
+<!-- About me js -->
+<script src="{{ asset('js/aboutme.js') }}" defer></script>
