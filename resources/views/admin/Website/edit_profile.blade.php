@@ -89,7 +89,7 @@
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary" style="margin-left: 10px;">Update</button>
-                                <a href="">
+                                <a href="{{ route('admin_profile') }}">
                                     <button class="btn btn-secondary" style="margin-left: 10px;">Back to
                                         Profile</button>
                                 </a>
