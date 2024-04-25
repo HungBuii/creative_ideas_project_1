@@ -134,8 +134,8 @@ class StudentController extends Controller
         $request->validate([
             'topic' => 'required',
             'tag' => 'required',
-            // 'file' => 'required|mimes:docx,jpg,jpeg,png,gif',
-            'file' => 'required|file',
+            'file' => 'required|mimes:docx,jpg,jpeg,png,gif',
+            // 'file' => 'required|file',
         ]);
 
         $single_faculty = Faculty::where('id', $id)->first();
@@ -207,8 +207,8 @@ class StudentController extends Controller
     public function edit_submit_idea(Request $request, $id)
     {
         $request->validate([
-            // 'file' => 'required|mimes:docx,jpg,jpeg,png,gif',
-            'file' => 'required|file',
+            'file' => 'required|mimes:docx,jpg,jpeg,png,gif',
+            // 'file' => 'required|file',
         ]);
 
         $student = Student::where('id', $request->student_id)->first();
