@@ -29,9 +29,6 @@
                     </div>
                     <div class="card-body table-border-style d-flex justify-content-between align-items-center">
                         <div class="table-responsive">
-                            <a href="{{ route('admin_add_faculty') }}" <button type="button" class="btn btn-success"
-                                style="float:right" ;><i class="feather mr-2 icon-plus-circle"></i>Add a
-                                Faculity</button></a>
                             <table class="table table-striped">
                                 <thead>
                                     <tr>

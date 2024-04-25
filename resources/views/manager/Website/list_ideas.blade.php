@@ -39,7 +39,7 @@
                             <form>
 
                                 <b>
-                                    <p style="font-size: 150%">Faculty :
+                                    <p style="font-size: 150%">Faculity :
                                         {{ $single_faculty->name }}</p>
                                 </b>
 
