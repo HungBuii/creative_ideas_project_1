@@ -38,7 +38,7 @@
                     </p> --}}
                     <br>
                     <a href="{{ route('guest_view_contribution', $idea->id) }}">
-                        <button class="btn  btn-primary">View this contribution here</button>
+                        <button class="btn  btn-primary">View this contribution here.</button>
                     </a>
                     
                 </div>
